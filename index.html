@@ -785,7 +785,9 @@ a.stat:hover { border-color:var(--brand-hover); }
 .lp-band-copy h2 { font-size:clamp(26px,2.6vw,38px) !important; line-height:1.15; }
 @media (max-width:900px) { .hero { min-height:520px; } .lp-band { background:linear-gradient(rgba(4,7,22,.82),rgba(4,7,22,.82)), url("images/platform-preview.webp") center / cover no-repeat, #040716; } .lp-band-copy { margin:0; width:auto; padding:40px 16px; } }
 /* login: credentials, then "Login as?" role boxes */
-.login-page { position:relative; min-height:calc(100vh - 130px); background:linear-gradient(90deg,rgba(4,7,22,.95) 0%,rgba(4,7,22,.8) 45%,rgba(4,7,22,.45)), url("images/globe.webp") right center / cover no-repeat, #040716; }
+.login-page { position:relative; isolation:isolate; clip-path:inset(0); min-height:calc(100vh - 130px); background:#040716; }
+.login-page::before { content:""; position:fixed; inset:0; z-index:-1; pointer-events:none; background:linear-gradient(90deg,rgba(4,7,22,.94) 0%,rgba(4,7,22,.72) 45%,rgba(4,7,22,.4)), url("images/globe.webp") 72% center / cover no-repeat; transform:scale(1.16); transform-origin:65% 50%; }
+@media (max-width:700px) { .login-page::before { background:linear-gradient(rgba(4,7,22,.82),rgba(4,7,22,.82)), url("images/globe.webp") 70% center / cover no-repeat; } }
 .login-page .d-loginas { margin:0 auto; }
 .login-fields { display:grid; gap:4px 16px; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); max-width:900px; margin:26px auto 0; padding:22px 22px 8px; text-align:left; border:1px solid rgba(80,120,255,.25); border-radius:16px; background:rgba(8,14,40,.78); backdrop-filter:blur(6px); }
 .login-step { display:flex; align-items:center; justify-content:center; gap:10px; margin-top:34px; font-size:15px; font-weight:600; color:#fff; }
@@ -793,7 +795,21 @@ a.stat:hover { border-color:var(--brand-hover); }
 .login-step span { display:grid; place-items:center; width:26px; height:26px; border-radius:50%; background:var(--brand-grad); font-size:13px; }
 .login-page .d-roles { margin-top:18px; }
 .login-page #login-msg, .login-page #signup-msg { max-width:900px; margin:14px auto 0; text-align:left; }
+.signup-form { max-width:920px; margin:22px auto 0; display:grid; gap:14px; text-align:left; }
+.su-sec { margin:0; padding:16px 20px 6px; border:1px solid rgba(80,120,255,.25); border-radius:16px; background:rgba(8,14,40,.78); backdrop-filter:blur(6px); min-width:0; }
+.su-sec legend { padding:0 8px; font-size:13px; font-weight:600; letter-spacing:.06em; text-transform:uppercase; color:#60a5fa; }
+.su-grid { display:grid; gap:4px 16px; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); }
+.su-wide { grid-column:1 / -1; }
+.su-drop { display:flex; align-items:center; gap:14px; padding:14px 16px; border:1.5px dashed rgba(59,130,246,.55); border-radius:12px; cursor:pointer; color:var(--slate-700); font-size:14px; }
+.su-drop:hover { background:rgba(59,130,246,.08); } .su-drop > .icon { width:26px; height:26px; color:#60a5fa; flex-shrink:0; }
+.su-drop #sproof-info { display:flex; align-items:center; gap:12px; min-width:0; } .su-drop b { display:block; color:#fff; word-break:break-all; } .su-drop small { color:var(--slate-600); }
+.su-thumb { width:64px; height:44px; object-fit:cover; border-radius:6px; border:1px solid var(--border); }
+.su-note { display:flex; align-items:center; gap:8px; font-size:12.5px; color:var(--slate-600); padding:0 4px; }
+input[type="date"] { color-scheme:dark; }
 .login-fields.signup { grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); }
+.login-fields.dv { max-width:620px; }
+.demo-acc { max-width:420px; margin:14px auto 0; text-align:left; font-size:13px; }
+.demo-acc ul { margin:8px 0 0; padding-left:18px; color:var(--slate-700); line-height:1.8; }
 .signup-done { max-width:460px; margin:26px auto 0; padding:22px; border:1px solid rgba(34,197,94,.45); border-radius:16px; background:rgba(8,14,40,.82); display:flex; flex-direction:column; gap:8px; }
 .signup-done p { color:var(--slate-600); font-size:13px; letter-spacing:.1em; text-transform:uppercase; }
 .signup-done b { font-size:32px; color:#fff; letter-spacing:.06em; user-select:all; }
@@ -13940,9 +13956,9 @@ function modal({ title, body, foot = '', wide = false, onClose }) {
 }
 function closeModal() { $('#modal-root').innerHTML = ''; const m = MODAL; MODAL = null; m?.onClose?.(); try { m?.lastFocus?.focus(); } catch { /* ignore */ } }
 let CONFIRM = null;
-function confirmDlg({ title, body, confirmLabel = 'Confirm', danger = false, onConfirm, extra = '' }) {
+function confirmDlg({ title, body, confirmLabel = 'Confirm', danger = false, onConfirm, extra = '', wide = false }) {
   CONFIRM = onConfirm;
-  modal({ title, body: `<div id="confirm-err"></div>${body}${extra}`, foot: `${btn('Cancel', { variant: 'secondary', act: 'modal-close' })}${btn(confirmLabel, { variant: danger ? 'danger' : 'primary', act: 'confirm-ok' })}` });
+  modal({ title, wide, body: `<div id="confirm-err"></div>${body}${extra}`, foot: `${btn('Cancel', { variant: 'secondary', act: 'modal-close' })}${btn(confirmLabel, { variant: danger ? 'danger' : 'primary', act: 'confirm-ok' })}` });
 }
 function toast(kind, msg) {
   const el = document.createElement('div'); el.className = `alert a-${kind} toast`; el.innerHTML = `<div class="row between top" style="flex-wrap:nowrap"><span>${msg}</span><button class="iconbtn" style="padding:2px" aria-label="Dismiss">${ic('close', 'sm')}</button></div>`;
@@ -14044,14 +14060,14 @@ function crumbsFor(path, r) {
 function render() {
   const { path } = route();
   const changed = UI.lastPath !== path; UI.lastPath = path;
-  if (changed) { UI.pop = null; UI.drawer = false; UI.signupDone = null; if (UI.ballot?.step === 'done') UI.ballot = null; }
+  if (changed) { UI.pop = null; UI.drawer = false; UI.signupDone = null; UI.signupProof = null; if (UI.ballot?.step === 'done') UI.ballot = null; }
   AFTER.length = 0;
   if (path.startsWith('/app') && me()) markDone(`visit:${path}`);
   $('#root').innerHTML = path.startsWith('/app') ? renderApp(path) : renderPublic(path);
   renderSim();
   AFTER.splice(0).forEach((f) => f());
   if (UI.revealPath !== path && !document.querySelector('#root .skel')) { UI.revealPath = path; revealOnScroll(); }
-  if (changed) { window.scrollTo(0, 0); $('#root h1')?.focus({ preventScroll: true }); }
+  if (changed) { window.scrollTo(0, 0); ($('#root #uid') || $('#root h1'))?.focus({ preventScroll: true }); }
 }
 // Scroll animation: blocks fade and slide up as they enter the viewport; siblings are staggered.
 const REVEAL = '.aud, .lp-band-copy > *, .journey li, .trust-stats, .trust-quote, .cta-copy > *, main > section.wrap > .row.between, main > section.wrap > h2, .d-stat, .d-row > .d-card, .d-col > .d-card, .d-row.tight > .d-card, .d-login-card, .login-fields, .d-role';
@@ -14079,7 +14095,7 @@ function renderPublic(path) {
   return `<div style="display:flex;flex-direction:column;min-height:100vh">${head}<main style="flex:1">${body}</main><footer class="pub-foot"><div class="wrap"><span>© ${new Date().getFullYear()} DigiVote · OOPS + DBMS Capstone Project · <b>Simulation</b></span><span>Every eligible voter casts one vote. Every accepted ballot can be checked.</span></div></footer></div>`;
 }
 function pLanding() {
-  return `<section class="hero"><div class="wrap"><p class="eyebrow">SECURE &bull; TRANSPARENT &bull; INCLUSIVE &bull; FOR EVERYONE</p><h1>Every Vote.<br>Every Voice.<br><span class="grad">A Stronger Tomorrow.</span></h1><p>DigiVote is a secure, transparent and adaptable digital election platform for governments, institutions, organizations and communities.</p><div class="row mt-6" style="gap:12px"><a class="btn primary lg" href="#/signup">Get Started ${ic('arrowRight', 'sm')}</a></div><ul class="pillars">${[['shield', 'Secure<br>Voting'], ['document', 'Independent<br>Verification'], ['chart', 'Transparent<br>Results'], ['users', 'Inclusive<br>Participation']].map(([i, t]) => `<li>${ic(i)}<span>${t}</span></li>`).join('')}</ul></div><ul class="hero-chips" aria-hidden="true">${[['users', 'People', 'Participate'], ['building', 'Elections', 'for Every Sector'], ['chart', 'Results', 'You Can Trust']].map(([i, a, b]) => `<li><span class="d-tile sm a-blue">${ic(i)}</span><span><b>${a}</b>${b}</span></li>`).join('')}</ul></section>
+  return `<section class="hero"><div class="wrap"><p class="eyebrow">SECURE &bull; TRANSPARENT &bull; INCLUSIVE &bull; FOR EVERYONE</p><h1>Every Vote.<br>Every Voice.<br><span class="grad">A Stronger Tomorrow.</span></h1><p>DigiVote is a secure, transparent and adaptable digital election platform for governments, institutions, organizations and communities.</p><div class="row mt-6" style="gap:12px"><a class="btn primary lg" href="#/signup">Get Started ${ic('arrowRight', 'sm')}</a><a class="btn secondary lg" href="#/login">${ic('person', 'sm')} Login</a></div><ul class="pillars">${[['shield', 'Secure<br>Voting'], ['document', 'Independent<br>Verification'], ['chart', 'Transparent<br>Results'], ['users', 'Inclusive<br>Participation']].map(([i, t]) => `<li>${ic(i)}<span>${t}</span></li>`).join('')}</ul></div></section>
   <section class="wrap section"><div class="row between" style="align-items:flex-end"><h2 style="font-size:30px;font-weight:700;color:#fff">Built for <span style="color:#3b82f6">Every Type of Election</span></h2><p class="muted" style="max-width:430px">From national, state and local elections to educational institutions, organizations and communities, DigiVote adapts to your needs.</p></div><div class="aud-grid mt-6">${[['building', 'Government Elections', 'National, state and local elections with high security and scalability.'], ['archive', 'Educational Institutions', 'Elections for colleges, universities, schools and academic councils.'], ['dashboard', 'Organizations & Corporates', 'Board elections, employee representatives and professional associations.'], ['users', 'Communities & Societies', 'Elections for residential societies, clubs, NGOs and community groups.']].map(([i, t, d]) => `<article class="aud"><div class="pic"></div><div class="tx"><span class="tile">${ic(i)}</span><h3>${t}</h3><p>${d}</p><a class="aud-go" href="#/signup" aria-label="Get started: ${t}">${ic('arrowRight', 'sm')}</a></div></article>`).join('')}</div></section>
   <section class="lp-band" aria-label="Manage elections with confidence"><div class="lp-band-copy"><span class="eyebrow" style="display:inline-block;border:1px solid var(--border);border-radius:6px;padding:3px 12px;font-size:12px;letter-spacing:.14em;color:#3b82f6;font-weight:600">POWERFUL &bull; SIMPLE &bull; RELIABLE</span><h2 style="font-size:34px;font-weight:700;color:#fff;margin-top:14px">Manage Elections <span style="color:#3b82f6">with Confidence.</span></h2><p class="muted mt-2">A complete platform to create, manage and conduct elections with security, transparency and ease.</p><ul class="stack-sm mt-4" style="list-style:none;padding:0">${['Create and configure elections', 'Manage candidates and voter eligibility', 'Monitor voting progress in real time', 'Verify votes with audit trails', 'Publish results and generate reports'].map((t) => `<li class="row" style="flex-wrap:nowrap"><span class="badge b-blue" style="width:24px;height:24px;justify-content:center;border-radius:50%">${ic('check', 'sm')}</span><span>${t}</span></li>`).join('')}</ul><div class="mt-6">${btn('Explore the Platform', { href: '/guide', icon: 'arrowRight' })}</div></div></section>
   <section class="wrap section" style="padding-top:0"><h2 style="font-size:30px;font-weight:700;color:#fff">A Simple and Secure <span style="color:#3b82f6">Election Journey</span></h2><ol class="journey">${[['document', 'Setup', 'Create and configure election with custom rules.'], ['users', 'Register', 'Candidates and eligible voters register and get verified.'], ['ballot', 'Vote', 'Eligible voters cast their anonymous votes securely.'], ['shield', 'Verify', 'Votes are recorded with verifiable receipts and audit trails.'], ['chart', 'Results', 'Final results are published and auditable.']].map(([i, t, d], n) => `<li><span class="tile">${ic(i)}</span><b>${n + 1}. ${t}</b><span>${d}</span></li>`).join('')}</ol></section>
@@ -14093,6 +14109,7 @@ function pSecurity() {
   const items = [['Anonymity', 'Identity tables (who may vote, who received a credential) and ballot tables (what was voted) share no columns or keys. The ballot is submitted without the login token.'], ['One person, one vote', 'One credential per eligible voter, one ballot per credential. Duplicates are rejected and recorded as security events.'], ['Receipts', 'A receipt proves your ballot is on the public bulletin board and, after tallying, that it was counted — never what you chose.'], ['Audit', 'Every significant action is appended to a SHA-256 hash chain. Auditors recompute it from the first record.'], ['Limitations', 'No coercion resistance; ballots are hidden among their shuffled bulletin batch, so small elections give small anonymity sets.']];
   return `<div class="wrap section" style="max-width:860px"><h1 style="font-size:30px;font-weight:600;color:var(--navy-900)" tabindex="-1">How DigiVote protects ballots</h1><div class="stack mt-6">${items.map(([t, d]) => card(t, `<p class="muted">${d}</p>`)).join('')}</div></div>`;
 }
+const DEMO_DV = [['u1', 'DV-2026-00001'], ['u2', 'DV-2026-00002'], ['u3', 'DV-2026-00003'], ['u6', 'DV-2026-00006'], ['u8', 'DV-2026-00008']];
 const DEMO_PASSWORD = 'demo-password';
 function pRegister() {
   return `<div class="wrap section" style="max-width:640px"><div class="card"><div class="body stack"><div><h1 style="font-size:22px;font-weight:600;color:var(--navy-900)" tabindex="-1">Register your organization</h1><p class="muted mt-1">You become its Organization Owner. In the simulation this starts a new, empty workspace (the demo data can be restored from the simulation panel).</p></div><div id="reg-msg"></div><form data-form="register" class="stack" novalidate><div class="grid g-sm-2">${field('Organization name', 'orgName', input('orgName'))}${field('Organization type', 'orgType', select('orgType', [['University', 'University'], ['Company', 'Company'], ['Housing society', 'Housing society'], ['NGO', 'NGO'], ['Club', 'Club']], 'University'))}</div><div class="grid g-sm-2">${field('Your full name', 'fullName', input('fullName', '', 'autocomplete="name"'))}${field('Email', 'regEmail', input('regEmail', '', 'type="email"'))}</div>${field('Password', 'regPassword', input('regPassword', '', 'type="password"'), { hint: 'At least 12 characters with upper- and lower-case letters and a digit.' })}<button class="btn primary" type="submit">Create organization</button></form></div></div></div>`;
@@ -14295,11 +14312,16 @@ FORMS.login = (f, b) => {
   showErrors(f, {});
   const box = $('#login-msg');
   if (!b?.dataset.id) { box.innerHTML = alertBox('info', 'Choose how you want to log in', 'Pick one of the five boxes below to open that dashboard.'); return; }
-  const acct = userByEmail(f.email.value.trim());
+  const no = f.uid.value.trim().toUpperCase().replace(/\s+/g, ''); const errs = {};
+  if (!no) errs.uid = 'Enter your DV number';
+  if (!f.password.value) errs.password = 'Enter your password';
+  if (!showErrors(f, errs)) return;
+  const acct = S.users.find((u) => u.uniqueNo === no);
+  if (!acct) { box.innerHTML = alertBox('info', 'No account with this DV number', `New user? <a href="#/signup">Sign up</a> to create your account and get a DV number.`); return; }
+  if (acct.pwHash !== sha256(f.password.value)) { box.innerHTML = alertBox('error', 'Sign-in failed', 'The DV number or password is incorrect.'); return; }
+  if (acct.role !== user(b.dataset.id).role) { box.innerHTML = alertBox('error', 'Wrong role', `DV number ${esc(no)} is registered as <b>${esc(ROLE_LABELS[acct.role])}</b>. Choose that box to log in.`); return; }
   box.innerHTML = '';
-  const id = acct?.uniqueNo && acct.role === user(b.dataset.id).role ? acct.id : b.dataset.id;
-  const val = (x) => (x ? esc(x) : '—');
-  confirmDlg({ title: 'Confirm login', confirmLabel: 'Confirm & log in', body: `<p class="muted" style="margin-bottom:12px">Please check your details before continuing.</p>${kv([['Email', val(f.email.value.trim())], ['Unique number', `<span class="mono">${val(f.uid.value.trim())}</span>`], ['Logging in as', `<b>${esc(ROLE_LABELS[user(b.dataset.id).role])}</b>`]])}`, onConfirm: async () => signIn(id) });
+  confirmDlg({ title: 'Confirm login', confirmLabel: 'Confirm & log in', body: `<p class="muted" style="margin-bottom:12px">Please check your details before continuing.</p>${kv([['Name', esc(acct.name)], ['DV number', `<span class="mono">${esc(no)}</span>`], ['Logging in as', `<b>${esc(ROLE_LABELS[acct.role])}</b>`]])}`, onConfirm: async () => signIn(acct.id) });
 };
 const COMPLAINT_TYPES = [['', 'Choose a category'], ['VOTING', 'Problem while voting'], ['LOGIN', 'Login or account issue'], ['RECEIPT', 'Receipt or verification'], ['RESULTS', 'Results or counting'], ['CANDIDATE', 'Candidate or campaign conduct'], ['OTHER', 'Something else']];
 ACT['complaint-open'] = () => {
@@ -14318,20 +14340,39 @@ FORMS.complaint = (f) => {
   $('#modal-body').innerHTML = `<div class="complaint-done"><span class="d-tile lg a-green" style="margin:0 auto">${ic('checkCircle')}</span><h3 class="strong mt-4" style="font-size:18px">Complaint received</h3><p class="muted mt-2">Thank you, ${esc(v.name)}. Your reference number is</p><b class="mono" id="complaint-ref">${ref}</b><p class="small muted">Keep it to follow up. This prototype stores complaints in your browser only; nothing is emailed.</p><div class="mt-6">${btn('Close', { act: 'modal-close' })}</div></div>`;
 };
 FORMS.signup = (f, b) => {
-  const v = { name: f.sname.value.trim(), email: f.semail.value.trim(), pw: f.spassword.value, pw2: f.sconfirm.value }; const errs = {};
-  // Prototype: no validation, any input creates the account.
-  showErrors(f, errs);
-  if (!v.name) v.name = 'New user';
+  const v = { name: f.sname.value.trim(), gender: f.sgender.value, dob: f.sdob.value, father: f.sfather.value.trim(), mother: f.smother.value.trim(), email: f.semail.value.trim(), mobile: f.smobile.value.replace(/[\s-]/g, '').replace(/^(\+?91)(?=\d{10}$)/, ''), address: f.saddress.value.trim(), idType: f.sidtype.value, idNo: f.sidno.value.toUpperCase().replace(/[\s-]/g, ''), proof: UI.signupProof, pw: f.spassword.value, pw2: f.sconfirm.value };
+  const errs = {}; const nameOk = (x) => /^[A-Za-z][A-Za-z .'-]{1,79}$/.test(x);
+  if (!nameOk(v.name)) errs.sname = 'Enter your full name (letters only)';
+  if (!v.gender) errs.sgender = 'Select your gender';
+  if (!v.dob) errs.sdob = 'Enter your date of birth';
+  else { const d = new Date(v.dob); const age = (Date.now() - d) / (365.2425 * DAY); if (Number.isNaN(age) || age < 0) errs.sdob = 'Enter a valid date'; else if (age < 18) errs.sdob = 'You must be at least 18 years old to register'; }
+  if (!nameOk(v.father)) errs.sfather = "Enter your father's name";
+  if (!nameOk(v.mother)) errs.smother = "Enter your mother's name";
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.email)) errs.semail = 'Enter a valid email address';
+  else if (userByEmail(v.email)) errs.semail = 'An account with this email already exists. Log in instead.';
+  if (!/^[6-9]\d{9}$/.test(v.mobile)) errs.smobile = 'Enter a valid 10-digit mobile number';
+  else if (S.users.some((u) => u.mobile === v.mobile)) errs.smobile = 'This mobile number is already registered';
+  if (v.address.length < 10) errs.saddress = 'Enter your full address';
+  if (!v.idType) errs.sidtype = 'Choose Voter ID or Aadhaar';
+  if (v.idType === 'VOTER_ID' && !/^[A-Z]{3}\d{7}$/.test(v.idNo)) errs.sidno = 'Voter ID (EPIC) is 3 letters followed by 7 digits';
+  if (v.idType === 'AADHAAR' && !/^[2-9]\d{11}$/.test(v.idNo)) errs.sidno = 'Aadhaar is 12 digits and does not start with 0 or 1';
+  if (!errs.sidno && v.idType && S.users.some((u) => u.idHash && u.idHash === sha256(`${v.idType}|${v.idNo}`))) errs.sidno = 'This ID is already registered to another account';
+  if (!v.proof) errs.sproof = 'Upload a photo or scan of your ID';
+  if (v.pw.length < 8) errs.spassword = 'Use at least 8 characters';
+  if (v.pw2 !== v.pw) errs.sconfirm = 'Passwords do not match';
+  if (!showErrors(f, errs)) { f.querySelector('.err:not(:empty)')?.closest('.field')?.scrollIntoView({ behavior: 'smooth', block: 'center' }); return; }
   if (!b?.dataset.id) { $('#signup-msg').innerHTML = alertBox('info', 'Choose your role', 'Pick one of the five boxes below to create your account.'); return; }
   const role = user(b.dataset.id).role;
-  confirmDlg({ title: 'Confirm sign up', confirmLabel: 'Confirm & create account', body: `<p class="muted" style="margin-bottom:12px">Please check your details. You'll get your unique number on the next screen.</p>${kv([['Full name', esc(v.name)], ['Email', v.email ? esc(v.email) : '—'], ['Signing up as', `<b>${esc(ROLE_LABELS[role])}</b>`]])}`, onConfirm: async () => createAccount(v, role) });
+  confirmDlg({ title: 'Confirm sign up', confirmLabel: 'Confirm & create account', wide: true, body: `<p class="muted" style="margin-bottom:12px">Please check your details. You'll get your DV number on the next screen.</p>${kv([['Full name', esc(v.name)], ['Gender', esc(v.gender)], ['Date of birth', esc(new Date(v.dob).toLocaleDateString(undefined, { day: 'numeric', month: 'long', year: 'numeric' }))], ["Father's name", esc(v.father)], ["Mother's name", esc(v.mother)], ['Email', esc(v.email)], ['Mobile', esc(v.mobile)], ['Address', esc(v.address)], ['Identity proof', `${v.idType === 'AADHAAR' ? 'Aadhaar' : 'Voter ID'} · <span class="mono">${maskId(v.idType, v.idNo)}</span>`], ['Uploaded file', `${esc(v.proof.name)} <span class="xs muted">(${Math.max(1, Math.round(v.proof.size / 1024))} KB)</span>`], ['Signing up as', `<b>${esc(ROLE_LABELS[role])}</b>`]])}`, onConfirm: async () => createAccount(v, role) });
 };
 function createAccount(v, role) {
   const taken = new Set(S.users.map((u) => u.uniqueNo).filter(Boolean));
   let uniqueNo; do { uniqueNo = `DV-${new Date().getFullYear()}-${String(Math.floor(10000 + Math.random() * 90000))}`; } while (taken.has(uniqueNo));
   const now = Date.now(); const id = `s${now}`;
   if (!v.email) v.email = `${uniqueNo.toLowerCase()}@digivote.demo`;
-  S.users.push({ id, name: v.name, email: v.email, role, status: 'ACTIVE', added: now, lastLogin: null, education: '', experience: '', achievements: '', uniqueNo, pwHash: sha256(v.pw) });
+  S.users.push({ id, name: v.name, email: v.email, role, status: 'ACTIVE', added: now, lastLogin: null, education: '', experience: '', achievements: '', uniqueNo, pwHash: sha256(v.pw), gender: v.gender, dob: v.dob, father: v.father, mother: v.mother, mobile: v.mobile, address: v.address, idType: v.idType, idMasked: maskId(v.idType, v.idNo), idHash: sha256(`${v.idType}|${v.idNo}`), proof: { name: v.proof.name, type: v.proof.type, size: v.proof.size, sha256: v.proof.hash, at: now } });
+  UI.signupProof = null;
+  audit('ACCOUNT_REGISTERED', `New ${ROLE_LABELS[role]} account ${uniqueNo} registered with ${v.idType === 'AADHAAR' ? 'Aadhaar' : 'Voter ID'} proof ${maskId(v.idType, v.idNo)}`, { actor: 'DigiVote service', sub: 'ACCOUNT' });
   enrollSignup(user(id));
   save(); UI.signupDone = { id, name: v.name, email: v.email, role, uniqueNo }; rerender();
 };
@@ -14344,6 +14385,20 @@ function enrollSignup(u) {
     audit('VOTERS_ADDED', `${u.name} added to the eligible voter list at sign-up`, { eid: e.id, actor: 'DigiVote service', sub: 'VOTERS' });
   });
 }
+const maskId = (type, no) => (type === 'AADHAAR' ? `XXXX XXXX ${no.slice(-4)}` : `${no.slice(0, 3)}****${no.slice(-3)}`);
+CHANGE.sproof = (el) => {
+  const file = el.files[0]; const info = $('#sproof-info'); const err = $('[data-err="sproof"]'); UI.signupProof = null;
+  if (!file) { info.textContent = 'Click to choose a photo or scan of your ID'; return; }
+  const bad = !/^image\//.test(file.type) && file.type !== 'application/pdf' ? 'Upload an image (JPG, PNG) or a PDF' : file.size > 5 * 1024 * 1024 ? 'The file is larger than 5 MB' : '';
+  if (bad) { el.value = ''; info.textContent = 'Click to choose a photo or scan of your ID'; if (err) err.textContent = bad; return; }
+  const r = new FileReader();
+  r.onload = () => {
+    UI.signupProof = { name: file.name, type: file.type, size: file.size, hash: sha256(String(r.result)) };
+    info.innerHTML = `${/^image\//.test(file.type) ? `<img src="${r.result}" alt="" class="su-thumb">` : ''}<span><b>${esc(file.name)}</b><small>${Math.max(1, Math.round(file.size / 1024))} KB · click to replace</small></span>`;
+    if (err) err.textContent = '';
+  };
+  r.readAsDataURL(file);
+};
 ACT['signup-continue'] = () => { const d = UI.signupDone; UI.signupDone = null; signIn(d.id); };
 ACT['signup-login'] = () => { UI.signupDone = null; go('/login'); };
 FORMS.register = async (f, b) => {
@@ -16713,27 +16768,34 @@ const LOGIN_ROLES = [
 ];
 function pLoginAs() {
   if (me()) return `<div class="wrap section" style="max-width:520px">${alertBox('info', `Signed in as ${esc(me().name)}`, `<a href="#${homeFor(role())}">Open your dashboard</a>`)}</div>`;
-  return `<section class="login-page"><div class="wrap section d-loginas"><p class="eyebrow-pill">SECURE &bull; TRANSPARENT &bull; INCLUSIVE</p><h1 tabindex="-1">Sign in to <span class="grad">DigiVote</span></h1><p class="muted">Enter your details, then choose how you want to log in.</p>
+  return `<section class="login-page"><div class="wrap section d-loginas"><p class="eyebrow-pill">SECURE &bull; TRANSPARENT &bull; INCLUSIVE</p><h1 tabindex="-1">Sign in to <span class="grad">DigiVote</span></h1><p class="muted">Enter your DV number and password, then choose how you want to log in.</p>
   <form data-form="login" novalidate><button type="submit" hidden aria-hidden="true" tabindex="-1"></button>
   <p class="login-step"><span>1</span>Your details</p>
-  <div class="login-fields">${field('Email', 'email', input('email', '', 'type="email" autocomplete="username" placeholder="you@example.com"'))}${field('Password', 'password', input('password', '', 'type="password" autocomplete="current-password" placeholder="••••••••"'))}${field('Unique number', 'uid', input('uid', '', 'autocomplete="off" placeholder="e.g. DV-2026-00125"'))}</div>
+  <div class="login-fields dv">${field('DV number', 'uid', input('uid', '', 'autocomplete="username" placeholder="DV-2026-00125" style="font-family:var(--mono);letter-spacing:.04em"'))}${field('Password', 'password', input('password', '', 'type="password" autocomplete="current-password" placeholder="••••••••"'))}</div>
   <div id="login-msg"></div>
   <p class="login-step"><span>2</span>Login as?</p>
   <div class="d-roles">${LOGIN_ROLES.map(([id, icon, accent, title, , text]) => `<button type="submit" class="d-role" data-id="${id}"><span class="d-tile lg a-${accent}">${ic(icon)}</span><b>${title}</b><small>${text}</small><span class="d-role-go">Continue ${ic('arrowRight', 'sm')}</span></button>`).join('')}</div></form>
-  <p class="muted small" style="margin-top:22px">Don't have an account? <a href="#/signup">Sign up</a></p></div></section>`;
+  <p class="muted small" style="margin-top:22px">New user? <a href="#/signup">Sign up</a> to get your DV number.</p>
+  <details class="acc demo-acc"><summary>Demo accounts</summary><p class="small muted mt-2">Password for all five: <span class="mono">${DEMO_PASSWORD}</span></p><ul>${DEMO_DV.map(([id, no]) => `<li><span class="mono">${no}</span> · ${esc(ROLE_LABELS[user(id).role])}</li>`).join('')}</ul></details></div></section>`;
 }
 function pSignup() {
   const d = UI.signupDone;
   if (d) {
     return `<section class="login-page"><div class="wrap section d-loginas"><span class="d-tile lg a-green" style="margin:0 auto">${ic('checkCircle')}</span><h1 tabindex="-1">Account <span class="grad">created</span></h1><p class="muted">Welcome, ${esc(d.name)}. You are registered as <b style="color:#fff">${esc(ROLE_LABELS[d.role])}</b>.</p>
-    <div class="signup-done"><p>Your unique number</p><b class="mono" id="unique-no">${d.uniqueNo}</b><small>Keep it safe. You need it with your email and password every time you log in.</small></div>
+    <div class="signup-done"><p>Your unique number</p><b class="mono" id="unique-no">${d.uniqueNo}</b><small>Keep it safe. You log in with this DV number and your password.</small></div>
     <div class="row mt-6" style="justify-content:center;gap:12px"><button type="button" class="btn primary lg" data-act="signup-continue">Continue to my dashboard ${ic('arrowRight', 'sm')}</button><button type="button" class="btn secondary lg" data-act="signup-login">Go to login</button></div></div></section>`;
   }
   if (me()) return `<div class="wrap section" style="max-width:520px">${alertBox('info', `Signed in as ${esc(me().name)}`, `<a href="#${homeFor(role())}">Open your dashboard</a>`)}</div>`;
-  return `<section class="login-page"><div class="wrap section d-loginas"><p class="eyebrow-pill">SECURE &bull; TRANSPARENT &bull; INCLUSIVE</p><h1 tabindex="-1">Join <span class="grad">DigiVote</span></h1><p class="muted">Create your account, then choose your role. You'll get a unique number to log in with.</p>
+  return `<section class="login-page"><div class="wrap section d-loginas"><p class="eyebrow-pill">SECURE &bull; TRANSPARENT &bull; INCLUSIVE</p><h1 tabindex="-1">Join <span class="grad">DigiVote</span></h1><p class="muted">Fill in your details and upload an identity proof, then choose your role. You'll get a DV number to log in with.</p>
   <form data-form="signup" novalidate><button type="submit" hidden aria-hidden="true" tabindex="-1"></button>
   <p class="login-step"><span>1</span>Your details</p>
-  <div class="login-fields signup">${field('Full name', 'sname', input('sname', '', 'autocomplete="name" placeholder="Priya Dharshini"'))}${field('Email', 'semail', input('semail', '', 'type="email" autocomplete="email" placeholder="you@example.com"'))}${field('Password', 'spassword', input('spassword', '', 'type="password" autocomplete="new-password" placeholder="At least 8 characters"'))}${field('Confirm password', 'sconfirm', input('sconfirm', '', 'type="password" autocomplete="new-password" placeholder="Repeat your password"'))}</div>
+  <div class="signup-form">
+  <fieldset class="su-sec"><legend>Personal details</legend><div class="su-grid">${field('Full name (as on ID)', 'sname', input('sname', '', 'autocomplete="name" placeholder="Enter your full name"'))}${field('Gender', 'sgender', select('sgender', [['', 'Select'], ['Female', 'Female'], ['Male', 'Male'], ['Other', 'Other'], ['Prefer not to say', 'Prefer not to say']], ''))}${field('Date of birth', 'sdob', input('sdob', '', `type="date" max="${new Date().toISOString().slice(0, 10)}"`), { hint: 'You must be 18 or older.' })}${field("Father's name", 'sfather', input('sfather', '', 'placeholder="Father\'s full name"'))}${field("Mother's name", 'smother', input('smother', '', 'placeholder="Mother\'s full name"'))}</div></fieldset>
+  <fieldset class="su-sec"><legend>Contact</legend><div class="su-grid">${field('Email', 'semail', input('semail', '', 'type="email" autocomplete="email" placeholder="you@example.com"'))}${field('Mobile number', 'smobile', input('smobile', '', 'type="tel" autocomplete="tel" inputmode="numeric" placeholder="98765 43210"'), { hint: '10-digit Indian mobile number.' })}<div class="su-wide">${field('Address', 'saddress', textarea('saddress', '', 'rows="2" autocomplete="street-address" placeholder="House no., street, city, state, PIN code"'))}</div></div></fieldset>
+  <fieldset class="su-sec"><legend>Identity proof</legend><div class="su-grid">${field('Proof type', 'sidtype', select('sidtype', [['', 'Select'], ['VOTER_ID', 'Voter ID (EPIC)'], ['AADHAAR', 'Aadhaar']], ''))}${field('ID number', 'sidno', input('sidno', '', 'autocomplete="off" placeholder="ABC1234567 or 1234 5678 9012"'))}<div class="su-wide">${field('Upload proof (image or PDF, up to 5 MB)', 'sproof', `<label class="su-drop" for="sproof">${ic('upload')}<span id="sproof-info">Click to choose a photo or scan of your ID</span></label><input type="file" id="sproof" name="sproof" accept="image/*,application/pdf" data-change="sproof" hidden>`)}</div></div></fieldset>
+  <fieldset class="su-sec"><legend>Password</legend><div class="su-grid">${field('Password', 'spassword', input('spassword', '', 'type="password" autocomplete="new-password" placeholder="At least 8 characters"'))}${field('Confirm password', 'sconfirm', input('sconfirm', '', 'type="password" autocomplete="new-password" placeholder="Repeat your password"'))}</div></fieldset>
+  <p class="su-note">${ic('lock', 'sm')} Prototype: your ID number is stored masked and the uploaded file only as a fingerprint. Nothing leaves this browser.</p>
+  </div>
   <div id="signup-msg"></div>
   <p class="login-step"><span>2</span>Sign up as?</p>
   <div class="d-roles">${LOGIN_ROLES.map(([id, icon, accent, title, , text]) => `<button type="submit" class="d-role" data-id="${id}"><span class="d-tile lg a-${accent}">${ic(icon)}</span><b>${title}</b><small>${text}</small><span class="d-role-go">Create account ${ic('arrowRight', 'sm')}</span></button>`).join('')}</div></form>
@@ -16976,7 +17038,8 @@ function liveActivity(forCandidate = false) {
 S = load(); if (!S) seed();
 S.seededAt ||= Date.now(); S.progress ||= {};
 S.spent ||= {}; S.devCred ||= {}; S.integrityRuns ||= [];
-S.users.filter((u) => u.uniqueNo).forEach(enrollSignup); save();
+S.users.filter((u) => u.uniqueNo).forEach(enrollSignup);
+DEMO_DV.forEach(([id, no]) => { const u = user(id); if (u && !u.uniqueNo) { u.uniqueNo = no; u.pwHash = sha256(DEMO_PASSWORD); } }); save();
 try { UI.collapsed = localStorage.getItem('digivote.simulation.collapsed') === '1'; const sp = localStorage.getItem('digivote.simulation.panel'); UI.simOpen = false; } catch { UI.simOpen = false; }
 render();
 </script>
