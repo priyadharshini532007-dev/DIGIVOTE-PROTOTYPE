@@ -699,6 +699,15 @@ a.stat:hover { border-color:var(--brand-hover); }
 .aud .pic { height:150px; background-color:#1e1b4b; }
 .cta-band { background-image:linear-gradient(90deg,rgba(4,7,22,.9) 0%,rgba(4,7,22,.55) 45%,rgba(4,7,22,.15)), url("images/people-globe.webp"), url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 900 300' preserveAspectRatio='xMaxYMax meet'><defs><linearGradient id='s' x1='0' y1='0' x2='0' y2='1'><stop offset='0' stop-color='%23050824'/><stop offset='.6' stop-color='%231a1156'/><stop offset='1' stop-color='%233b1a78'/></linearGradient><linearGradient id='b' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%231e50ff' stop-opacity='.85'/><stop offset='1' stop-color='%234f2bff' stop-opacity='.55'/></linearGradient></defs><rect width='900' height='300' fill='url(%23s)'/><g fill='%23150f3a'><rect x='0' y='190' width='40' height='110'/><rect x='46' y='160' width='30' height='140'/><rect x='84' y='200' width='44' height='100'/><rect x='140' y='170' width='34' height='130'/><rect x='182' y='210' width='50' height='90'/></g><g fill='%230b0a2b' stroke='%232c2a7a' stroke-width='.8'><rect x='470' y='170' width='46' height='130'/><rect x='524' y='130' width='36' height='170'/><rect x='568' y='180' width='52' height='120'/><rect x='630' y='110' width='40' height='190'/><rect x='790' y='140' width='48' height='160'/><rect x='846' y='100' width='44' height='200'/></g><g fill='%23c4b5fd' opacity='.7'><rect x='532' y='144' width='3' height='4'/><rect x='542' y='160' width='3' height='4'/><rect x='638' y='128' width='3' height='4'/><rect x='650' y='150' width='3' height='4'/><rect x='800' y='160' width='3' height='4'/><rect x='856' y='120' width='3' height='4'/><rect x='866' y='150' width='3' height='4'/></g><path d='M690 144 L776 120 L862 144 L862 270 L776 296 L690 270 Z' fill='url(%23b)' stroke='%236aa8ff' stroke-width='2'/><path d='M690 144 L776 168 L862 144' stroke='%239cc4ff' stroke-width='2' fill='none'/><g transform='translate(762 66) rotate(-12)'><rect width='72' height='48' rx='4' fill='%23e8f0ff'/><path d='M18 26 l9 9 l20 -20' stroke='%232563eb' stroke-width='6' stroke-linecap='round' stroke-linejoin='round' fill='none'/></g><g transform='translate(720 196)'><rect width='34' height='34' rx='7' fill='none' stroke='%23e8f0ff' stroke-width='3'/><path d='M7 18 l8 8 l20 -22' stroke='%23e8f0ff' stroke-width='4' stroke-linecap='round' stroke-linejoin='round' fill='none'/></g></svg>"); background-size:100% 100%, cover, auto 100%; background-position:center, center, right bottom; text-align:left; padding:52px 40px; }
 .cta-band .row { justify-content:flex-start !important; }
+.cta-full { display:flex; align-items:center; min-height:max(460px,33.3vw); margin-top:24px; background:linear-gradient(90deg,rgba(4,7,22,.82) 0%,rgba(4,7,22,.45) 38%,rgba(4,7,22,0) 62%), linear-gradient(180deg,#040716 0%,transparent 14%,transparent 86%,#040716 100%), url("images/people-globe.webp") center / cover no-repeat, #040716; }
+.cta-full .wrap { width:100%; }
+.cta-copy { max-width:540px; padding:48px 0; }
+.cta-copy h2 { font-size:clamp(28px,3vw,40px); font-weight:800; line-height:1.15; color:#fff; }
+.cta-copy h2 span { display:block; background:linear-gradient(90deg,#3b82f6,#8b5cf6); -webkit-background-clip:text; background-clip:text; color:transparent; }
+.cta-copy .row { gap:12px; }
+@media (max-width:700px) { .cta-full { background:linear-gradient(rgba(4,7,22,.75),rgba(4,7,22,.75)), url("images/people-globe.webp") center / cover no-repeat, #040716; } }
+.complaint-done { text-align:center; padding:8px 0; }
+.complaint-done b.mono { display:block; margin:10px 0 6px; font-size:26px; color:#fff; letter-spacing:.05em; user-select:all; }
 .cta-band p.muted { margin-left:0 !important; }
 
 /* design images: election thumbnails are quarters of one strip; focal points for cropped slots */
@@ -790,6 +799,39 @@ a.stat:hover { border-color:var(--brand-hover); }
 .signup-done b { font-size:32px; color:#fff; letter-spacing:.06em; user-select:all; }
 .signup-done small { color:var(--slate-600); }
 .d-ring-h b.long { font-size:19px; }
+.d-ledger-sum { display:flex; flex-wrap:wrap; gap:6px 22px; padding:0 16px 12px; font-size:12.5px; color:var(--slate-600); } .d-ledger-sum b { color:#fff; font-weight:600; }
+/* QR receipt with 30-second submission window */
+.qr-receipt .qr { border-radius:10px; }
+.qr-timer { display:flex; align-items:center; gap:16px; padding:14px; border-radius:12px; border:1px solid rgba(245,158,11,.45); background:rgba(245,158,11,.08); }
+.qr-timer b.t { display:block; color:#fff; font-size:15px; } .qr-timer p { margin-top:2px; }
+.qr-ring { --p:1; position:relative; flex-shrink:0; display:grid; place-content:center; text-align:center; width:84px; height:84px; border-radius:50%; background:conic-gradient(#f59e0b calc(var(--p) * 360deg), rgba(120,140,220,.18) 0); }
+.qr-ring::before { content:""; position:absolute; inset:7px; border-radius:50%; background:#0a1230; }
+.qr-ring > * { position:relative; } .qr-ring b { font-size:24px; color:#fff; line-height:1; font-variant-numeric:tabular-nums; } .qr-ring small { font-size:11px; color:var(--slate-600); }
+.qr-ring.low { background:conic-gradient(#ef4444 calc(var(--p) * 360deg), rgba(120,140,220,.18) 0); }
+.qr-log { list-style:none; margin:8px 0 0; padding:0; display:grid; gap:6px; }
+.qr-log li { display:flex; flex-wrap:wrap; align-items:center; gap:10px; padding:8px 10px; border-radius:8px; background:rgba(10,18,48,.55); border:1px solid rgba(80,120,255,.14); font-size:13px; }
+.qr-log li span.d { flex:1; min-width:180px; color:var(--slate-700); } .qr-log time { font-size:12px; color:var(--slate-500); font-variant-numeric:tabular-nums; }
+.mail-list { list-style:none; margin:0; padding:0; } .mail-list li + li { border-top:1px solid var(--border); }
+.mail-list button { display:flex; gap:14px; width:100%; padding:14px 16px; text-align:left; background:none; border:0; color:inherit; font:inherit; cursor:pointer; }
+.mail-list button:hover { background:rgba(59,130,246,.08); } .mail-list .unread b { color:#fff; } .mail-list small { display:block; color:var(--slate-600); }
+.mail-view { white-space:pre-wrap; line-height:1.6; color:var(--slate-800); font-size:14px; padding:16px; border-radius:10px; background:rgba(10,18,48,.55); border:1px solid var(--border); }
+/* scroll animation */
+.rv { opacity:0; transform:translateY(28px); transition:opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1); }
+.rv.rv-in { opacity:1; transform:none; }
+.hero .wrap > * { animation:rv-hero .9s cubic-bezier(.2,.7,.2,1) both; }
+.hero .wrap > :nth-child(2) { animation-delay:.12s; } .hero .wrap > :nth-child(3) { animation-delay:.24s; } .hero .wrap > :nth-child(4) { animation-delay:.36s; } .hero .wrap > :nth-child(5) { animation-delay:.48s; }
+.hero-chips li { animation:rv-chip .8s cubic-bezier(.2,.7,.2,1) both, chip-float 6s ease-in-out 1s infinite; }
+.hero-chips li:nth-child(1) { animation-delay:.5s, 1.3s; } .hero-chips li:nth-child(2) { animation-delay:.68s, 2.1s; } .hero-chips li:nth-child(3) { animation-delay:.86s, 2.9s; }
+@keyframes rv-hero { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:none; } }
+@keyframes rv-chip { from { opacity:0; transform:translateX(30px); } to { opacity:1; transform:none; } }
+@keyframes chip-float { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-6px); } }
+.aud .pic { transition:transform .6s ease; } .aud { transition-property:opacity,transform,border-color; } .aud:hover .pic { transform:scale(1.05); }
+/* hero image blends into the page instead of ending in a hard edge */
+.hero { padding-bottom:70px; -webkit-mask-image:linear-gradient(180deg,#000 62%,transparent 100%), linear-gradient(90deg,#000 94%,transparent 100%); -webkit-mask-composite:source-in; mask-image:linear-gradient(180deg,#000 62%,transparent 100%), linear-gradient(90deg,#000 94%,transparent 100%); mask-composite:intersect; }
+.hero .wrap, .hero-chips { position:relative; z-index:1; }
+.hero-chips { position:absolute; }
+.lp-band, .cta-full { -webkit-mask-image:linear-gradient(180deg,transparent 0%,#000 18%,#000 82%,transparent 100%), linear-gradient(90deg,transparent 0%,#000 7%,#000 93%,transparent 100%); -webkit-mask-composite:source-in; mask-image:linear-gradient(180deg,transparent 0%,#000 18%,#000 82%,transparent 100%), linear-gradient(90deg,transparent 0%,#000 7%,#000 93%,transparent 100%); mask-composite:intersect; }
+@media (prefers-reduced-motion: reduce) { .rv { opacity:1; transform:none; transition:none; } .hero .wrap > *, .hero-chips li { animation:none; } }
 @media (min-width:1500px) { .d-outreach { grid-template-columns:repeat(4,minmax(0,1fr)); } }
 .d-table { font-size:12.5px; } .d-table th, .d-table td { padding:9px 7px; } .d-table th:first-child, .d-table td:first-child { padding-left:18px; }
 .d-table .mono { font-size:11.5px; } .d-prog > span { width:46px; } .d-table .d-chip { padding:2px 7px; font-size:11.5px; } .d-table .d-pill { padding:2px 8px; font-size:11.5px; }
@@ -804,6 +846,26 @@ a.stat:hover { border-color:var(--brand-hover); }
 .chap-head { border-bottom-color:rgba(80,120,255,.25); }
 .flow li { border-color:rgba(80,120,255,.22); }
 .why { border-left-color:#3b82f6; }
+/* developer guide: use the screen width, give code the room, let notes breathe */
+.guide-page, body:has(.guide-page) .pub-head .wrap { max-width:min(1680px, 100%); padding-left:clamp(16px,3vw,48px); padding-right:clamp(16px,3vw,48px); }
+.guide-page > p.muted { max-width:900px !important; line-height:1.65; }
+@media (min-width:1100px) { .guide-page .wt-layout { grid-template-columns:15rem minmax(0,1fr); gap:40px; } }
+.guide-page .wt-nav button { padding:7px 10px; font-size:14px; line-height:1.4; }
+.guide-page .wt-main { gap:64px; }
+.guide-page .chap { gap:22px; }
+.guide-page .chap p, .guide-page .why p, .guide-page .key p { line-height:1.7; }
+.guide-page .chap h2 { font-size:26px; line-height:1.25; } .guide-page .chap-tag { margin-top:4px; }
+.guide-page .snip-h { padding:12px 18px; }
+.guide-page .code { max-height:620px; padding:12px 0; }
+.guide-page .code table { font-size:13px; line-height:1.75; }
+.guide-page .snip-b { grid-template-columns:minmax(0,1fr) !important; }
+.guide-page .snip-b .notes { display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); border-left:0 !important; border-top:1px solid #1e2b4f !important; }
+@media (min-width:1500px) { .guide-page .snip-b { grid-template-columns:minmax(0,1fr) clamp(300px,22vw,380px) !important; } .guide-page .snip-b .notes { display:flex; border-top:0 !important; border-left:1px solid #1e2b4f !important; } }
+.guide-page .notes { padding:16px 14px; gap:12px; }
+.guide-page .note { padding:10px 12px; font-size:14px; line-height:1.6; gap:12px; }
+.guide-page .nl { margin-top:6px; }
+.guide-page .flow { gap:14px; } .guide-page .flow li { padding:14px 16px; line-height:1.55; }
+.guide-page .toc-grid { gap:14px; } .guide-page .toc-card { padding:14px 16px; } .guide-page .toc-b span { line-height:1.5; }
 
 @media print { :root { color-scheme:light; --bg:#fff; --card:#fff; --text:#1e293b; --muted:#475569; --border:#e2e8f0; --navy-900:#0b1f4d; --navy-800:#12306e; --navy-700:#1a3f8c; --navy-100:#e6ecf8; --slate-50:#f8fafc; --slate-100:#f1f5f9; --slate-200:#e2e8f0; --slate-300:#cbd5e1; --slate-400:#94a3b8; --slate-500:#64748b; --slate-600:#475569; --slate-700:#334155; --slate-800:#1e293b; --slate-900:#0f172a; } body { background:#fff !important; background-image:none !important; } .card, .stat { background-image:none !important; box-shadow:none !important; } .sim-bar, .shell-side, .topbar, .no-print { display:none !important; } .shell-main { padding:0 !important; } }
 </style>
@@ -13403,7 +13465,7 @@ let S = null; // simulation state (fictional data)
 const UI = { tables: {}, pop: null, collapsed: false, drawer: false, loaded: null, wizard: null, ballot: null, notifFilter: 'All', searchQ: '', simOpen: true, lastPath: null };
 
 function save() { try { localStorage.setItem(STORE_KEY, JSON.stringify(S)); } catch { /* storage optional */ } }
-function load() { try { const raw = localStorage.getItem(STORE_KEY); if (raw) { const s = JSON.parse(raw); if (s && s.v === 3) return s; } } catch { /* ignore */ } return null; }
+function load() { try { const raw = localStorage.getItem(STORE_KEY); if (raw) { const s = JSON.parse(raw); if (s && s.v === 4) return s; } } catch { /* ignore */ } return null; }
 
 const me = () => (S.session ? S.users.find((u) => u.id === S.session) : null);
 const role = () => me()?.role;
@@ -13446,7 +13508,7 @@ function security(type, severity, detail, opts = {}) {
 }
 function notify(userIds, n) {
   const at = n.at ?? Date.now();
-  [...new Set(userIds)].filter(Boolean).forEach((uidv) => S.notes.unshift({ id: rid('n'), uid: uidv, at, read: !!n.read, title: n.title, msg: n.msg, cat: n.cat || 'Election', to: n.to || null, eid: n.eid || null }));
+  [...new Set(userIds)].filter(Boolean).forEach((uidv) => S.notes.unshift({ id: rid('n'), uid: uidv, at, read: !!n.read, title: n.title, msg: n.msg, cat: n.cat || 'Election', to: n.to || null, eid: n.eid || null, mail: n.mail || null }));
 }
 const membersOfRole = (r) => S.users.filter((u) => u.role === r && u.status === 'ACTIVE').map((u) => u.id);
 const electionPeople = (e) => [...new Set([e.adminId, ...membersOfRole('ORG_OWNER'), ...appsFor(e.id).map((a) => a.uid), ...e.eligible.map((em) => userByEmail(em)?.id)])].filter(Boolean);
@@ -13648,6 +13710,7 @@ function voterStatus(e, u = me()) {
   const eligible = e.eligible.includes(u.email);
   const voted = (S.wallet[u.id] || []).some((r) => r.eid === e.id);
   if (!eligible) return { key: 'NOT_ELIGIBLE', label: 'Not on the voter list', tone: 'gray' };
+  if ((S.wallet[u.id] || []).some((r) => r.eid === e.id && r.state === 'PENDING_QR')) return { key: 'PENDING_QR', label: 'QR receipt pending (30 s)', tone: 'amber' };
   if (resultsVisible(e)) return { key: 'RESULTS', label: 'Results published', tone: 'blue' };
   if (voted) return { key: 'SUBMITTED', label: 'Vote submitted', tone: 'green' };
   if (e.status === 'VOTING') return { key: 'READY', label: 'Ready to vote', tone: 'green' };
@@ -13660,7 +13723,7 @@ function voterStatus(e, u = me()) {
 // =====================================================================================================
 function seed() {
   const now = Date.now();
-  S = { v: 3, session: null, receiptKeys: {}, verifyCount: {}, outage: false, tamper: null, bbTamper: null, users: [], elections: [], apps: [], creds: {}, ballots: {}, pending: {}, bulletin: {}, receipts: {}, wallet: {}, results: {}, audit: [], security: [], notes: [], reports: [], transitions: [], imports: [], spent: {}, devCred: {}, integrityRuns: [] };
+  S = { v: 4, session: null, receiptKeys: {}, verifyCount: {}, outage: false, tamper: null, bbTamper: null, users: [], elections: [], apps: [], creds: {}, ballots: {}, pending: {}, bulletin: {}, receipts: {}, wallet: {}, results: {}, audit: [], security: [], notes: [], reports: [], transitions: [], imports: [], spent: {}, devCred: {}, integrityRuns: [] };
   S.seededAt = now; S.progress = {};
   S.org = { name: 'Northfield Institute (Demo)', type: 'University', description: 'A fictional university used to demonstrate DigiVote. Student council, committee and alumni elections.', email: 'elections@northfield.demo', phone: '+1 555 0100', status: 'ACTIVE', created: now - 210 * DAY, logoUrl: '', primaryColor: '#0b1f4d', tagline: 'Fair elections, verifiable results' };
   S.policy = { minLength: 12, lockoutAttempts: 5, lockoutMinutes: 15, sessionMinutes: 120, requireMixed: true, history: [{ at: now - 120 * DAY, by: 'Asha Raman (Organization Owner)', change: 'Minimum password length 10 → 12' }] };
@@ -13681,7 +13744,7 @@ function seed() {
   const voters = S.users.filter((u) => ['VOTER', 'CANDIDATE'].includes(u.role) && u.status === 'ACTIVE').map((u) => u.email);
   const baseRules = (o = {}) => ({ countingMethod: 'PLURALITY', maxSelections: 1, minCandidates: 2, notaEnabled: true, requireCandidateApproval: true, anonymousVoting: true, candidatesMayVote: true, administratorsMayVote: false, receiptsRequired: true, qrReceipts: true, publicResults: true, resultPublicationPolicy: 'MANUAL', campaignStart: null, campaignEnd: null, votingStart: null, votingEnd: null, ...o });
   const E = (id, title, description, status, rules, eligible, created, extraProps = {}) => S.elections.push({ id, title, description, status, adminId: 'u2', created: now - created * DAY, updated: now - Math.min(created, 2) * DAY, rules, eligible, frozen: ['VOTING', 'VERIFICATION', 'PUBLISHED', 'ARCHIVED'].includes(status), keys: null, ...extraProps });
-  E('e1', 'Student Council President 2026', 'Elect the president of the student council for the 2026–27 academic year. One choice per voter; None of the above is available.', 'CAMPAIGN', baseRules({ campaignStart: now - 3 * DAY, campaignEnd: now + 1 * HOUR, votingStart: now + 1 * HOUR, votingEnd: now + 3 * DAY }), voters.slice(), 21);
+  E('e1', 'Student Council President 2026', 'Elect the president of the student council for the 2026–27 academic year. One choice per voter; None of the above is available.', 'VOTING', baseRules({ campaignStart: now - 10 * DAY, campaignEnd: now - 1 * HOUR, votingStart: now - 1 * HOUR, votingEnd: now + 2 * DAY }), voters.slice(), 21, { keys: { created: now - HOUR, fingerprint: sha256('k-e1').slice(0, 32) } });
   E('e2', 'Sports Committee Representatives', 'Choose up to two representatives for the sports committee. Approval voting: every candidate you approve receives one vote.', 'VOTING', baseRules({ countingMethod: 'APPROVAL', maxSelections: 2, minCandidates: 2, notaEnabled: false, campaignStart: now - 9 * DAY, campaignEnd: now - 2 * DAY, votingStart: now - 2 * DAY, votingEnd: now + 2 * DAY }), voters.slice(), 30, { keys: { created: now - 2 * DAY, fingerprint: sha256('k-e2').slice(0, 32) } });
   E('e3', 'Library Committee 2025', 'Elect the student member of the library committee.', 'PUBLISHED', baseRules({ campaignStart: now - 40 * DAY, campaignEnd: now - 33 * DAY, votingStart: now - 33 * DAY, votingEnd: now - 30 * DAY }), voters.slice(), 50, { keys: { created: now - 33 * DAY, fingerprint: sha256('k-e3').slice(0, 32) } });
   E('e4', 'Hostel Council 2025', 'Elect the hostel council secretary.', 'ARCHIVED', baseRules({ campaignStart: now - 120 * DAY, campaignEnd: now - 112 * DAY, votingStart: now - 112 * DAY, votingEnd: now - 110 * DAY }), voters.slice(), 130, { keys: { created: now - 112 * DAY, fingerprint: sha256('k-e4').slice(0, 32) } });
@@ -13692,7 +13755,9 @@ function seed() {
   const A = (id, eid, uidv, name, status, days, extra = {}) => S.apps.push({ id, eid, uid: uidv, name, status, submitted: now - days * DAY, qualifications: extra.q || 'Final-year student, active member of two societies.', statement: extra.s || 'I want to make student representation more transparent.', feedback: extra.f || '', reviewed: status !== 'SUBMITTED' ? now - (days - 1) * DAY : null, profile: { education: extra.edu || 'B.Sc. Computer Science (final year)', experience: extra.exp || 'Class representative, 2 years', achievements: extra.ach || 'Organised the 2025 orientation week' }, manifesto: extra.m || null, media: extra.media || [] });
   A('a1', 'e1', 'u3', 'Meera Iyer', 'APPROVED', 18, { edu: 'B.A. Economics (final year)', exp: 'Vice-president, Debating Society; class representative 2024–25', ach: 'Led the campus sustainability drive (1,200 sign-ups)', m: manifesto('A student council that listens every week, not once a year.', 'Open meetings, published minutes and a budget anyone can read.', '1. Monthly open forums\n2. Public council budget\n3. Late-night library hours during exams', 'Peer mentoring for first-years; mental-health first-aiders in every hostel.', 'Online suggestion box with public responses within 14 days.'), media: [{ name: 'meera-manifesto.pdf', kind: 'Manifesto PDF', size: 412000 }, { name: 'meera-poster.png', kind: 'Campaign poster', size: 820000 }] });
   A('a2', 'e1', 'u4', 'Arjun Mehta', 'APPROVED', 17, { edu: 'B.Tech Mechanical (third year)', exp: 'Captain, inter-college football team', ach: 'Raised funds for new sports equipment', m: manifesto('A campus where every student feels at home.', 'Improve facilities and student services.', '1. Better hostel Wi-Fi\n2. More sports slots\n3. Affordable canteen menu', 'Weekend shuttle to the city centre.', 'Quarterly town-hall with the administration.') });
-  A('a3', 'e1', 'u5', 'Lina Park', 'SUBMITTED', 2, { edu: 'B.Sc. Biology (second year)', s: 'I will focus on accessibility and inclusion.' });
+  A('a3', 'e1', 'u5', 'Lina Park', 'APPROVED', 12, { edu: 'B.Sc. Biology (second year)', exp: 'Founder, Campus Accessibility Collective; peer tutor for first-years', ach: 'Got ramps and captioned lectures added in three faculties', s: 'I will focus on accessibility and inclusion.', m: manifesto('A campus that works for every student, whatever their needs.', 'Make access, inclusion and wellbeing part of every council decision.', '1. Accessibility audit of every building\n2. Captions on all recorded lectures\n3. Quiet study rooms in each hostel', 'Free counselling sessions during exam weeks; a needs-based travel grant.', 'An anonymous inclusion feedback form reviewed at every council meeting.') });
+  A('a4', 'e1', null, 'Kavya Reddy', 'APPROVED', 14, { edu: 'B.Com Finance (final year)', exp: 'Treasurer, Entrepreneurship Cell; organiser of the annual job fair', ach: 'Brought 40 companies to the 2025 placement fair', s: 'I want every student to graduate with real opportunities.', m: manifesto('Every student graduates with skills, contacts and a plan.', 'Connect classrooms to careers through the council.', '1. Monthly career clinics\n2. Paid internship board\n3. Alumni mentoring for every department', 'A small-grants fund for student start-ups; free CV and interview workshops.', 'A public tracker of internships offered and filled each semester.') });
+  A('a5', 'e1', null, 'Rohan Das', 'APPROVED', 13, { edu: 'B.Sc. Computer Science (third year)', exp: 'Lead developer, campus app club; hostel representative', ach: 'Built the campus bus-tracker used by 3,000 students', s: 'I will make campus services digital and simple.', m: manifesto('A smart campus where services take minutes, not days.', 'Put every student service online and keep it simple.', '1. One app for fees, forms and complaints\n2. Campus-wide free Wi-Fi\n3. Live canteen and library seat availability', 'Digital ID for library, hostel and transport; online grievance tracking.', 'Open data on council spending, published every month.') });
   ['Ishaan Rao', 'Maya Chen', 'Leo Fischer'].forEach((n, i) => A(`a2${i}`, 'e2', null, n, 'APPROVED', 25, { m: manifesto(`${n.split(' ')[0]}'s vision for sport`, 'More access to facilities', '1. Extend gym hours', '—', '—') }));
   ['Nadia Hussain', 'Peter Novak'].forEach((n, i) => A(`a3${i}`, 'e3', null, n, 'APPROVED', 45));
   ['Rahul Verma', 'Emily Stone', 'Yusuf Ali'].forEach((n, i) => A(`a4${i}`, 'e4', null, n, 'APPROVED', 125));
@@ -13735,6 +13800,10 @@ function seed() {
   audit('ELECTION_STATE_CHANGED', 'Campaign → Voting', { at: at(2), eid: 'e2', actor: 'Daniel Okafor (Election Administrator)' });
   castFor('e2', [[['a20', 'a21'], 3], [['a21'], 2], [['a22', 'a20'], 1], [['a22'], 1]], 1, ['voter@northfield.demo', 'candidate@northfield.demo']);
   flushPending('e2', false, at(1));
+  // e1 voting in progress: 9 ballots from other voters; Ravi and Meera have not voted yet.
+  audit('ELECTION_STATE_CHANGED', 'Campaign → Voting', { at: now - HOUR, eid: 'e1', actor: 'Daniel Okafor (Election Administrator)' });
+  castFor('e1', [[['a1'], 3], [['a2'], 2], [['a4'], 2], [['a5'], 1], [['NOTA'], 1]], 0.03, ['voter@northfield.demo', 'candidate@northfield.demo']);
+  flushPending('e1', false, now - 30 * MIN);
   audit('ELECTION_CREATED', 'Alumni Board Election created', { at: at(6), eid: 'e6', actor: 'Daniel Okafor (Election Administrator)' });
   audit('CANDIDATE_APPROVED', 'Meera Iyer approved', { at: at(17), eid: 'e1', actor: 'Daniel Okafor (Election Administrator)', sub: 'CANDIDATE' });
   audit('CANDIDATE_APPROVED', 'Arjun Mehta approved', { at: at(16), eid: 'e1', actor: 'Daniel Okafor (Election Administrator)', sub: 'CANDIDATE' });
@@ -13745,6 +13814,8 @@ function seed() {
   [['e4', 'CAMPAIGN', 'VOTING', 112], ['e4', 'VOTING', 'VERIFICATION', 110], ['e4', 'VERIFICATION', 'PUBLISHED', 109], ['e4', 'PUBLISHED', 'ARCHIVED', 90], ['e3', 'CAMPAIGN', 'VOTING', 33], ['e3', 'VOTING', 'VERIFICATION', 30], ['e3', 'VERIFICATION', 'PUBLISHED', 29], ['e2', 'DRAFT', 'REGISTRATION', 20], ['e2', 'REGISTRATION', 'CAMPAIGN', 9], ['e2', 'CAMPAIGN', 'VOTING', 2], ['e1', 'DRAFT', 'REGISTRATION', 20], ['e1', 'REGISTRATION', 'CAMPAIGN', 3], ['e6', 'DRAFT', 'REGISTRATION', 5]]
     .forEach(([eid, from, to, d]) => S.transitions.push({ eid, from, to, at: at(d), by: 'Daniel Okafor (Election Administrator)' }));
 
+  S.transitions.push({ eid: 'e1', from: 'CAMPAIGN', to: 'VOTING', at: now - HOUR, by: 'Daniel Okafor (Election Administrator)' });
+  notify(['u6', 'u7', 'u3', 'u4', 'u5', ...S.users.filter((u) => u.role === 'VOTER').map((u) => u.id)], { title: 'Student Council President 2026: Voting', msg: 'Voting is open. Read the five manifestos and cast your ballot.', cat: 'Election', eid: 'e1', to: '/app/vote/e1', at: now - HOUR });
   security('LOGIN_FAILED', 'MEDIUM', '3 failed sign-in attempts for one account', { at: now - 5 * HOUR, principal: 'sha256:9f2c…' });
   security('ACCOUNT_LOCKED', 'HIGH', 'Account locked after 5 failed attempts (15 min)', { at: now - 26 * HOUR, principal: 'sha256:41ab…' });
   security('DUPLICATE_BALLOT_REJECTED', 'MEDIUM', 'A spent voting token was presented again and rejected', { at: now - 20 * HOUR, eid: 'e2' });
@@ -13951,7 +14022,7 @@ const NAV_GROUPS = {
     { title: 'More', items: [['/app/result-verification', 'Result verification', 'check'], ['/app/results', 'Results & analytics', 'chart']] },
   ],
 };
-const COMMON_NAV = [['/app/guide', 'My guide', 'help'], ['/app/notifications', 'Notifications', 'bell'], ['/app/profile', 'Settings', 'settings']];
+const COMMON_NAV = [['/app/guide', 'My guide', 'help'], ['/app/mail', 'Mail', 'message'], ['/app/notifications', 'Notifications', 'bell'], ['/app/profile', 'Settings', 'settings']];
 const navFlat = (r) => (NAV_GROUPS[r] || []).flatMap((g) => g.items);
 const homeFor = (r) => navFlat(r)[0]?.[0] ?? '/app/profile';
 const electionPath = (r, id) => (['ORG_OWNER', 'ELECTION_ADMIN', 'AUDITOR'].includes(r) ? `/app/elections/${id}` : `/app/e/${id}`);
@@ -13979,7 +14050,21 @@ function render() {
   $('#root').innerHTML = path.startsWith('/app') ? renderApp(path) : renderPublic(path);
   renderSim();
   AFTER.splice(0).forEach((f) => f());
+  if (UI.revealPath !== path && !document.querySelector('#root .skel')) { UI.revealPath = path; revealOnScroll(); }
   if (changed) { window.scrollTo(0, 0); $('#root h1')?.focus({ preventScroll: true }); }
+}
+// Scroll animation: blocks fade and slide up as they enter the viewport; siblings are staggered.
+const REVEAL = '.aud, .lp-band-copy > *, .journey li, .trust-stats, .trust-quote, .cta-copy > *, main > section.wrap > .row.between, main > section.wrap > h2, .d-stat, .d-row > .d-card, .d-col > .d-card, .d-row.tight > .d-card, .d-login-card, .login-fields, .d-role';
+let REVEAL_IO = null;
+function revealOnScroll() {
+  REVEAL_IO?.disconnect();
+  if (!('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  REVEAL_IO = new IntersectionObserver((entries) => entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('rv-in'); REVEAL_IO.unobserve(e.target); } }), { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+  document.querySelectorAll(REVEAL).forEach((el) => {
+    const i = Array.prototype.indexOf.call(el.parentElement.children, el);
+    el.classList.add('rv'); el.style.transitionDelay = `${Math.min(i, 6) * 70}ms`;
+    REVEAL_IO.observe(el);
+  });
 }
 const rerender = () => { const y = window.scrollY; render(); window.scrollTo(0, y); };
 
@@ -13994,12 +14079,12 @@ function renderPublic(path) {
   return `<div style="display:flex;flex-direction:column;min-height:100vh">${head}<main style="flex:1">${body}</main><footer class="pub-foot"><div class="wrap"><span>© ${new Date().getFullYear()} DigiVote · OOPS + DBMS Capstone Project · <b>Simulation</b></span><span>Every eligible voter casts one vote. Every accepted ballot can be checked.</span></div></footer></div>`;
 }
 function pLanding() {
-  return `<section class="hero"><div class="wrap"><p class="eyebrow">SECURE &bull; TRANSPARENT &bull; INCLUSIVE &bull; FOR EVERYONE</p><h1>Every Vote.<br>Every Voice.<br><span class="grad">A Stronger Tomorrow.</span></h1><p>DigiVote is a secure, transparent and adaptable digital election platform for governments, institutions, organizations and communities.</p><div class="row mt-6" style="gap:12px"><a class="btn primary lg" href="#/signup">Get Started ${ic('arrowRight', 'sm')}</a><a class="btn secondary lg" href="#/login">${ic('person', 'sm')} Login</a></div><ul class="pillars">${[['shield', 'Secure<br>Voting'], ['document', 'Independent<br>Verification'], ['chart', 'Transparent<br>Results'], ['users', 'Inclusive<br>Participation']].map(([i, t]) => `<li>${ic(i)}<span>${t}</span></li>`).join('')}</ul></div><ul class="hero-chips" aria-hidden="true">${[['users', 'People', 'Participate'], ['building', 'Elections', 'for Every Sector'], ['chart', 'Results', 'You Can Trust']].map(([i, a, b]) => `<li><span class="d-tile sm a-blue">${ic(i)}</span><span><b>${a}</b>${b}</span></li>`).join('')}</ul></section>
+  return `<section class="hero"><div class="wrap"><p class="eyebrow">SECURE &bull; TRANSPARENT &bull; INCLUSIVE &bull; FOR EVERYONE</p><h1>Every Vote.<br>Every Voice.<br><span class="grad">A Stronger Tomorrow.</span></h1><p>DigiVote is a secure, transparent and adaptable digital election platform for governments, institutions, organizations and communities.</p><div class="row mt-6" style="gap:12px"><a class="btn primary lg" href="#/signup">Get Started ${ic('arrowRight', 'sm')}</a></div><ul class="pillars">${[['shield', 'Secure<br>Voting'], ['document', 'Independent<br>Verification'], ['chart', 'Transparent<br>Results'], ['users', 'Inclusive<br>Participation']].map(([i, t]) => `<li>${ic(i)}<span>${t}</span></li>`).join('')}</ul></div><ul class="hero-chips" aria-hidden="true">${[['users', 'People', 'Participate'], ['building', 'Elections', 'for Every Sector'], ['chart', 'Results', 'You Can Trust']].map(([i, a, b]) => `<li><span class="d-tile sm a-blue">${ic(i)}</span><span><b>${a}</b>${b}</span></li>`).join('')}</ul></section>
   <section class="wrap section"><div class="row between" style="align-items:flex-end"><h2 style="font-size:30px;font-weight:700;color:#fff">Built for <span style="color:#3b82f6">Every Type of Election</span></h2><p class="muted" style="max-width:430px">From national, state and local elections to educational institutions, organizations and communities, DigiVote adapts to your needs.</p></div><div class="aud-grid mt-6">${[['building', 'Government Elections', 'National, state and local elections with high security and scalability.'], ['archive', 'Educational Institutions', 'Elections for colleges, universities, schools and academic councils.'], ['dashboard', 'Organizations & Corporates', 'Board elections, employee representatives and professional associations.'], ['users', 'Communities & Societies', 'Elections for residential societies, clubs, NGOs and community groups.']].map(([i, t, d]) => `<article class="aud"><div class="pic"></div><div class="tx"><span class="tile">${ic(i)}</span><h3>${t}</h3><p>${d}</p><a class="aud-go" href="#/signup" aria-label="Get started: ${t}">${ic('arrowRight', 'sm')}</a></div></article>`).join('')}</div></section>
   <section class="lp-band" aria-label="Manage elections with confidence"><div class="lp-band-copy"><span class="eyebrow" style="display:inline-block;border:1px solid var(--border);border-radius:6px;padding:3px 12px;font-size:12px;letter-spacing:.14em;color:#3b82f6;font-weight:600">POWERFUL &bull; SIMPLE &bull; RELIABLE</span><h2 style="font-size:34px;font-weight:700;color:#fff;margin-top:14px">Manage Elections <span style="color:#3b82f6">with Confidence.</span></h2><p class="muted mt-2">A complete platform to create, manage and conduct elections with security, transparency and ease.</p><ul class="stack-sm mt-4" style="list-style:none;padding:0">${['Create and configure elections', 'Manage candidates and voter eligibility', 'Monitor voting progress in real time', 'Verify votes with audit trails', 'Publish results and generate reports'].map((t) => `<li class="row" style="flex-wrap:nowrap"><span class="badge b-blue" style="width:24px;height:24px;justify-content:center;border-radius:50%">${ic('check', 'sm')}</span><span>${t}</span></li>`).join('')}</ul><div class="mt-6">${btn('Explore the Platform', { href: '/guide', icon: 'arrowRight' })}</div></div></section>
   <section class="wrap section" style="padding-top:0"><h2 style="font-size:30px;font-weight:700;color:#fff">A Simple and Secure <span style="color:#3b82f6">Election Journey</span></h2><ol class="journey">${[['document', 'Setup', 'Create and configure election with custom rules.'], ['users', 'Register', 'Candidates and eligible voters register and get verified.'], ['ballot', 'Vote', 'Eligible voters cast their anonymous votes securely.'], ['shield', 'Verify', 'Votes are recorded with verifiable receipts and audit trails.'], ['chart', 'Results', 'Final results are published and auditable.']].map(([i, t, d], n) => `<li><span class="tile">${ic(i)}</span><b>${n + 1}. ${t}</b><span>${d}</span></li>`).join('')}</ol></section>
   <section class="wrap"><div class="trust"><div class="trust-stats"><h2>Trusted by Organizations Worldwide</h2><ul>${[['building', '500+', 'Organizations'], ['users', '1M+', 'Voters Enabled'], ['ballot', '5K+', 'Elections Conducted'], ['clock', '99.9%', 'System Uptime']].map(([i, v, l]) => `<li><span class="d-tile sm a-blue">${ic(i)}</span><span><b>${v}</b>${l}</span></li>`).join('')}</ul></div><figure class="trust-quote"><span class="q">&ldquo;</span><blockquote>DigiVote has made our election process more transparent, secure and inclusive. It's easy to use and works perfectly for our community.</blockquote><figcaption><span class="avatar">AS</span><span><b>Anita Sharma</b>Election Administrator</span><span class="stars">★★★★★</span></figcaption></figure></div></section>
-  <section class="wrap section"><div class="cta-band"><h2>Be a Part of <span>More Transparent Elections</span></h2><p class="muted mt-3" style="max-width:520px;margin-left:auto;margin-right:auto">Join governments, institutions, organizations and communities that trust DigiVote for secure and inclusive elections.</p><div class="row mt-6" style="justify-content:center;gap:12px"><a class="btn primary lg" href="#/signup">Get Started ${ic('arrowRight', 'sm')}</a><a class="btn secondary lg" href="#/about">Contact Us</a></div></div></section>`;
+  <section class="cta-full" aria-label="Be a part of more transparent elections"><div class="wrap"><div class="cta-copy"><h2>Be a Part of <span>More Transparent Elections</span></h2><p class="muted mt-3">Join governments, institutions, organizations and communities that trust DigiVote for secure and inclusive elections.</p><div class="row mt-6" style="gap:12px"><button type="button" class="btn secondary lg" data-act="complaint-open">Contact Us</button></div></div></div></section>`;
 }
 function pAbout() {
   return `<div class="wrap section" style="max-width:780px"><h1 style="font-size:30px;font-weight:600;color:var(--navy-900)" tabindex="-1">About DigiVote</h1><div class="stack mt-6" style="color:var(--slate-700)"><p>DigiVote is a multi-organization digital election platform built as an Object-Oriented Programming and Database Management Systems capstone project. It covers the complete election lifecycle: onboarding an organization, configuring rules, registering and approving candidates, managing eligible voters, anonymous voting, receipts, results, auditing and archival.</p><p>The real backend is a Java 21 / Spring Boot modular monolith on a normalized MySQL schema; the frontend is React with Tailwind CSS. Cryptography uses RSA blind signatures for anonymous credentials and the Paillier cryptosystem for encrypted tallying.</p>${alertBox('warning', 'You are viewing the simulation', 'This page runs entirely in your browser with fictional data. Hashes (SHA-256) are real; blind signatures and Paillier encryption are represented by their effects, not executed.')}</div></div>`;
@@ -14069,7 +14154,7 @@ function topbar() {
   <div style="position:relative" class="popwrap"><button class="iconbtn" data-act="pop" data-pop="notif" aria-label="Notifications, ${unread} unread" aria-expanded="${pop === 'notif'}">${ic('bell')}${unread ? `<span class="dotcount">${unread > 9 ? '9+' : unread}</span>` : ''}</button>${pop === 'notif' ? popHtml : ''}</div>
   <div style="position:relative" class="popwrap"><button class="iconbtn" data-act="pop" data-pop="profile" aria-label="Account menu" aria-expanded="${pop === 'profile'}" style="padding:4px;gap:8px;align-items:center"><span class="avatar">${initials(u.name)}</span><span class="only-desktop" style="text-align:left;line-height:1.2"><b style="display:block;font-size:13px;color:var(--navy-900);max-width:10rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(u.name)}</b><span class="xs muted">${ROLE_LABELS[u.role]}</span></span><span class="profile-btn only-desktop"><span class="chev">${ic('chevronRight', 'sm')}</span></span></button>${pop === 'profile' ? popHtml : ''}</div></div>`;
 }
-const NOTIF_CATS = ['All', 'Election', 'Candidate', 'Results', 'Security', 'Account'];
+const NOTIF_CATS = ['All', 'Election', 'Email', 'Candidate', 'Results', 'Security', 'Account'];
 function notifPop() {
   const list = S.notes.filter((n) => n.uid === me().id && (UI.notifFilter === 'All' || n.cat === UI.notifFilter)).slice(0, 8);
   return `<div class="pop" role="dialog" aria-label="Notifications"><div class="row between" style="padding:10px 16px;border-bottom:1px solid var(--slate-100)"><b class="strong">Notifications</b><button class="btn ghost sm" data-act="notif-all-read">Mark all read</button></div><div class="row" style="padding:8px 12px;gap:4px;border-bottom:1px solid var(--slate-100)">${NOTIF_CATS.map((c) => `<button class="badge ${UI.notifFilter === c ? 'b-blue' : 'b-gray'}" style="border:0;cursor:pointer" data-act="notif-filter" data-cat="${c}">${c}</button>`).join('')}</div><div style="max-height:340px;overflow-y:auto">${list.map((n) => `<button class="item" data-act="notif-open" data-id="${n.id}" style="display:flex;gap:10px;${n.read ? '' : 'background:var(--panel-2)'}"><span style="width:8px;height:8px;border-radius:50%;margin-top:7px;flex-shrink:0;background:${n.read ? 'transparent' : 'var(--navy-600)'}"></span><span style="min-width:0"><b style="display:block;font-size:13px;color:var(--navy-900)">${esc(n.title)}</b><span class="small muted" style="display:block">${esc(n.msg)}</span><span class="xs muted">${esc(n.cat)} · ${ago(n.at)}</span></span></button>`).join('') || '<p class="small muted" style="padding:16px">No notifications in this category.</p>'}</div><a class="item small" href="#/app/notifications" style="border-top:1px solid var(--slate-100);text-align:center">View all notifications</a></div>`;
@@ -14187,7 +14272,7 @@ Object.assign(ACT, {
   drawer() { UI.drawer = true; rerender(); }, 'drawer-close'() { UI.drawer = false; rerender(); },
   'notif-filter'(el) { UI.notifFilter = el.dataset.cat; renderTopbar(); },
   'notif-all-read'() { S.notes.forEach((n) => { if (n.uid === me().id) n.read = true; }); save(); renderTopbar(); if (route().path === '/app/notifications') rerender(); },
-  'notif-open'(el) { const n = S.notes.find((x) => x.id === el.dataset.id); if (!n) return; n.read = true; save(); UI.pop = null; if (n.to) go(n.to); else rerender(); },
+  'notif-open'(el) { const n = S.notes.find((x) => x.id === el.dataset.id); if (!n) return; n.read = true; save(); UI.pop = null; if (n.mail) { go('/app/mail'); setTimeout(() => openEmail(n.mail), 320); } else if (n.to) go(n.to); else rerender(); },
   logout() { S.session = null; save(); UI.pop = null; UI.loaded = null; toast('info', 'You have been signed out.'); go('/'); },
   'quick-login'(el) { signIn(el.dataset.id); },
   'sim-toggle'() { UI.simOpen = !UI.simOpen; try { localStorage.setItem('digivote.simulation.panel', UI.simOpen ? '1' : '0'); } catch { /* optional */ } renderSim(); },
@@ -14212,7 +14297,25 @@ FORMS.login = (f, b) => {
   if (!b?.dataset.id) { box.innerHTML = alertBox('info', 'Choose how you want to log in', 'Pick one of the five boxes below to open that dashboard.'); return; }
   const acct = userByEmail(f.email.value.trim());
   box.innerHTML = '';
-  signIn(acct?.uniqueNo && acct.role === user(b.dataset.id).role ? acct.id : b.dataset.id);
+  const id = acct?.uniqueNo && acct.role === user(b.dataset.id).role ? acct.id : b.dataset.id;
+  const val = (x) => (x ? esc(x) : '—');
+  confirmDlg({ title: 'Confirm login', confirmLabel: 'Confirm & log in', body: `<p class="muted" style="margin-bottom:12px">Please check your details before continuing.</p>${kv([['Email', val(f.email.value.trim())], ['Unique number', `<span class="mono">${val(f.uid.value.trim())}</span>`], ['Logging in as', `<b>${esc(ROLE_LABELS[user(b.dataset.id).role])}</b>`]])}`, onConfirm: async () => signIn(id) });
+};
+const COMPLAINT_TYPES = [['', 'Choose a category'], ['VOTING', 'Problem while voting'], ['LOGIN', 'Login or account issue'], ['RECEIPT', 'Receipt or verification'], ['RESULTS', 'Results or counting'], ['CANDIDATE', 'Candidate or campaign conduct'], ['OTHER', 'Something else']];
+ACT['complaint-open'] = () => {
+  const u = me();
+  modal({ title: 'Send a complaint', body: `<p class="muted small" style="margin-bottom:12px">Tell us what went wrong. You'll get a reference number to follow up with.</p><form data-form="complaint" class="stack" novalidate><div class="grid g-sm-2">${field('Your name', 'cname', input('cname', u?.name || '', 'autocomplete="name" autofocus'))}${field('Email', 'cemail', input('cemail', u?.email || '', 'type="email" autocomplete="email"'))}</div>${field('Category', 'ctype', select('ctype', COMPLAINT_TYPES, ''))}${field('Election (optional)', 'celection', input('celection', '', 'placeholder="e.g. Student Council Election 2026"'))}${field('Your complaint', 'ctext', textarea('ctext', '', 'rows="5" placeholder="Describe what happened, when, and what you expected."'))}<div class="row" style="justify-content:flex-end;gap:10px">${btn('Cancel', { variant: 'secondary', act: 'modal-close' })}<button class="btn primary" type="submit">Send complaint</button></div></form>` });
+};
+FORMS.complaint = (f) => {
+  const v = { name: f.cname.value.trim(), email: f.cemail.value.trim(), type: f.ctype.value, election: f.celection.value.trim(), text: f.ctext.value.trim() }; const errs = {};
+  if (v.name.length < 2) errs.cname = 'Enter your name';
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.email)) errs.cemail = 'Enter a valid email address';
+  if (!v.type) errs.ctype = 'Choose a category';
+  if (v.text.length < 15) errs.ctext = 'Please describe the problem (at least 15 characters)';
+  if (!showErrors(f, errs)) return;
+  const ref = `CMP-${new Date().getFullYear()}-${String(Math.floor(10000 + Math.random() * 90000))}`;
+  S.complaints ||= []; S.complaints.push({ ref, ...v, at: Date.now() }); save();
+  $('#modal-body').innerHTML = `<div class="complaint-done"><span class="d-tile lg a-green" style="margin:0 auto">${ic('checkCircle')}</span><h3 class="strong mt-4" style="font-size:18px">Complaint received</h3><p class="muted mt-2">Thank you, ${esc(v.name)}. Your reference number is</p><b class="mono" id="complaint-ref">${ref}</b><p class="small muted">Keep it to follow up. This prototype stores complaints in your browser only; nothing is emailed.</p><div class="mt-6">${btn('Close', { act: 'modal-close' })}</div></div>`;
 };
 FORMS.signup = (f, b) => {
   const v = { name: f.sname.value.trim(), email: f.semail.value.trim(), pw: f.spassword.value, pw2: f.sconfirm.value }; const errs = {};
@@ -14220,12 +14323,27 @@ FORMS.signup = (f, b) => {
   showErrors(f, errs);
   if (!v.name) v.name = 'New user';
   if (!b?.dataset.id) { $('#signup-msg').innerHTML = alertBox('info', 'Choose your role', 'Pick one of the five boxes below to create your account.'); return; }
-  const role = user(b.dataset.id).role; const taken = new Set(S.users.map((u) => u.uniqueNo).filter(Boolean));
+  const role = user(b.dataset.id).role;
+  confirmDlg({ title: 'Confirm sign up', confirmLabel: 'Confirm & create account', body: `<p class="muted" style="margin-bottom:12px">Please check your details. You'll get your unique number on the next screen.</p>${kv([['Full name', esc(v.name)], ['Email', v.email ? esc(v.email) : '—'], ['Signing up as', `<b>${esc(ROLE_LABELS[role])}</b>`]])}`, onConfirm: async () => createAccount(v, role) });
+};
+function createAccount(v, role) {
+  const taken = new Set(S.users.map((u) => u.uniqueNo).filter(Boolean));
   let uniqueNo; do { uniqueNo = `DV-${new Date().getFullYear()}-${String(Math.floor(10000 + Math.random() * 90000))}`; } while (taken.has(uniqueNo));
   const now = Date.now(); const id = `s${now}`;
+  if (!v.email) v.email = `${uniqueNo.toLowerCase()}@digivote.demo`;
   S.users.push({ id, name: v.name, email: v.email, role, status: 'ACTIVE', added: now, lastLogin: null, education: '', experience: '', achievements: '', uniqueNo, pwHash: sha256(v.pw) });
+  enrollSignup(user(id));
   save(); UI.signupDone = { id, name: v.name, email: v.email, role, uniqueNo }; rerender();
 };
+/** Prototype: a signed-up Voter or Candidate is added to the eligible voter list of every open election. */
+function enrollSignup(u) {
+  if (!u || !['VOTER', 'CANDIDATE'].includes(u.role)) return;
+  if (!u.email) u.email = `${(u.uniqueNo || u.id).toLowerCase()}@digivote.demo`;
+  S.elections.filter((e) => ['REGISTRATION', 'CAMPAIGN', 'VOTING'].includes(e.status) && !e.eligible.includes(u.email)).forEach((e) => {
+    e.eligible.push(u.email);
+    audit('VOTERS_ADDED', `${u.name} added to the eligible voter list at sign-up`, { eid: e.id, actor: 'DigiVote service', sub: 'VOTERS' });
+  });
+}
 ACT['signup-continue'] = () => { const d = UI.signupDone; UI.signupDone = null; signIn(d.id); };
 ACT['signup-login'] = () => { UI.signupDone = null; go('/login'); };
 FORMS.register = async (f, b) => {
@@ -14238,7 +14356,7 @@ FORMS.register = async (f, b) => {
   try {
     await withBusy(b, () => api(() => {
       const now = Date.now();
-      S = { v: 3, session: 'u1', receiptKeys: {}, verifyCount: {}, outage: false, tamper: null, bbTamper: null, users: [], elections: [], apps: [], creds: {}, ballots: {}, pending: {}, bulletin: {}, receipts: {}, wallet: {}, results: {}, audit: [], security: [], notes: [], reports: [], transitions: [], imports: [], spent: {}, devCred: {}, integrityRuns: [], seededAt: Date.now(), progress: {} };
+      S = { v: 4, session: 'u1', receiptKeys: {}, verifyCount: {}, outage: false, tamper: null, bbTamper: null, users: [], elections: [], apps: [], creds: {}, ballots: {}, pending: {}, bulletin: {}, receipts: {}, wallet: {}, results: {}, audit: [], security: [], notes: [], reports: [], transitions: [], imports: [], spent: {}, devCred: {}, integrityRuns: [], seededAt: Date.now(), progress: {} };
       S.org = { name: v.orgName.trim(), type: v.orgType, description: '', email: v.regEmail, phone: '', status: 'ACTIVE', created: now, logoUrl: '', primaryColor: '#0b1f4d', tagline: '' };
       S.policy = { minLength: 12, lockoutAttempts: 5, lockoutMinutes: 15, sessionMinutes: 120, requireMixed: true, history: [] };
       S.users.push({ id: 'u1', name: v.fullName.trim(), email: v.regEmail.trim(), role: 'ORG_OWNER', status: 'ACTIVE', added: now, lastLogin: now, education: '', experience: '', achievements: '' });
@@ -14389,6 +14507,7 @@ CHANGE['qr-file'] = async (el) => {
 
 // ---------- Receipt card (voter wallet) ----------
 function receiptCard(w) {
+  if (w.state) return qrReceiptPanel(w);
   const e = election(w.eid); const v = verifyReceipt(w.code); const st = VERIFY_STATES[v.status];
   const entry = boardOf(w.eid).find((b) => b.c === w.c);
   const count = Object.values(S.receipts).filter((x) => x.eid === w.eid).length;
@@ -15107,7 +15226,7 @@ function pGuide() {
   UI.guideCodes = [];
   const tab = route().q.get('tab') === 'setup' ? 'setup' : 'code';
   const tabs = [['code', 'Code walkthrough', 'Real code, explained chapter by chapter'], ['setup', 'Setup & code map', 'Install, run, configure, and what every file does']];
-  return `<div class="wrap section"><p class="small strong" style="color:var(--navy-700)">Developer guide</p><h1 tabindex="-1" style="font-size:30px;font-weight:600;color:var(--navy-900);margin-top:4px">DigiVote project guide</h1><p class="muted mt-2" style="max-width:780px">How DigiVote works, explained through its real source code — and everything you need to install, run and find your way around the project.</p><div class="row mt-4"><a class="btn primary" href="../docs/DigiVote-Project-Guide.pdf" target="_blank" rel="noopener">${ic('download', 'sm')}Download PDF (review pack)</a><span class="small muted">docs/DigiVote-Project-Guide.pdf · all chapters, role guides, setup, code map and viva preparation</span></div>
+  return `<div class="wrap section guide-page"><p class="small strong" style="color:var(--navy-700)">Developer guide</p><h1 tabindex="-1" style="font-size:30px;font-weight:600;color:var(--navy-900);margin-top:4px">DigiVote project guide</h1><p class="muted mt-2" style="max-width:780px">How DigiVote works, explained through its real source code — and everything you need to install, run and find your way around the project.</p><div class="row mt-4"><a class="btn primary" href="../docs/DigiVote-Project-Guide.pdf" target="_blank" rel="noopener">${ic('download', 'sm')}Download PDF (review pack)</a><span class="small muted">docs/DigiVote-Project-Guide.pdf · all chapters, role guides, setup, code map and viva preparation</span></div>
   <div class="guide-tabs" role="tablist">${tabs.map(([k, l, d]) => `<button type="button" role="tab" aria-selected="${tab === k}" data-act="guide-tab" data-tab="${k}"><b>${l}</b><span>${d}</span></button>`).join('')}</div>
   <div class="mt-6">${tab === 'code' ? walkthroughHtml() : guideSetupHtml()}</div></div>`;
 }
@@ -16152,8 +16271,8 @@ CHANGE['dir-filter'] = LIVE['dir-filter'];
 function myElectionsPage() {
   const els = myEligible();
   const t = dataTable('my-els', { rows: els, search: (e) => e.title, pageSize: 8, empty: 'You are not on any voter list yet', emptyHint: 'Your election administrator adds eligible voters.',
-    filters: [{ key: 'vs', label: 'Status', options: [['READY', 'Ready to vote'], ['SUBMITTED', 'Vote submitted'], ['NOT_OPEN', 'Not yet open'], ['CLOSED', 'Voting closed'], ['RESULTS', 'Results published']], test: (e, v) => voterStatus(e).key === v }],
-    columns: [{ key: 't', label: 'Election', render: (e) => `<b class="strong">${esc(e.title)}</b><div class="xs muted">${esc(S.org.name)}</div>` }, { key: 's', label: 'Stage', render: (e) => status(e.status) }, { key: 'w', label: 'Voting window', render: (e) => `<span class="small">${fmtShort(e.rules.votingStart)} → ${fmtShort(e.rules.votingEnd)}</span>`, sortVal: (e) => e.rules.votingStart || 0 }, { key: 'vs', label: 'My status', render: (e) => { const v = voterStatus(e); return badge(v.tone, v.label); } }, { key: 'a', label: '', render: (e) => { const v = voterStatus(e); return `<div class="row" style="flex-wrap:nowrap">${v.key === 'READY' ? btn('Vote', { href: `/app/vote/${e.id}`, size: 'sm' }) : ''}${v.key === 'SUBMITTED' ? btn('Receipt', { href: '/app/receipts', size: 'sm', variant: 'secondary' }) : ''}${v.key === 'RESULTS' ? btn('Results', { href: '/app/published', size: 'sm', variant: 'secondary' }) : ''}${btn('Details', { href: `/app/e/${e.id}`, size: 'sm', variant: 'ghost' })}</div>`; } }] });
+    filters: [{ key: 'vs', label: 'Status', options: [['READY', 'Ready to vote'], ['SUBMITTED', 'Vote submitted'], ['PENDING_QR', 'QR receipt pending'], ['NOT_OPEN', 'Not yet open'], ['CLOSED', 'Voting closed'], ['RESULTS', 'Results published']], test: (e, v) => voterStatus(e).key === v }],
+    columns: [{ key: 't', label: 'Election', render: (e) => `<b class="strong">${esc(e.title)}</b><div class="xs muted">${esc(S.org.name)}</div>` }, { key: 's', label: 'Stage', render: (e) => status(e.status) }, { key: 'w', label: 'Voting window', render: (e) => `<span class="small">${fmtShort(e.rules.votingStart)} → ${fmtShort(e.rules.votingEnd)}</span>`, sortVal: (e) => e.rules.votingStart || 0 }, { key: 'vs', label: 'My status', render: (e) => { const v = voterStatus(e); return badge(v.tone, v.label); } }, { key: 'a', label: '', render: (e) => { const v = voterStatus(e); return `<div class="row" style="flex-wrap:nowrap">${v.key === 'READY' ? btn('Vote', { href: `/app/vote/${e.id}`, size: 'sm' }) : ''}${v.key === 'PENDING_QR' ? btn('Submit QR', { href: `/app/vote/${e.id}`, size: 'sm' }) : ''}${v.key === 'SUBMITTED' ? btn('Receipt', { href: '/app/receipts', size: 'sm', variant: 'secondary' }) : ''}${v.key === 'RESULTS' ? btn('Results', { href: '/app/published', size: 'sm', variant: 'secondary' }) : ''}${btn('Details', { href: `/app/e/${e.id}`, size: 'sm', variant: 'ghost' })}</div>`; } }] });
   return `${pageHead(role() === 'VOTER' ? 'My elections' : 'My ballots', 'Elections where you are on the eligible voter list.')}${card('', t, { flush: true })}`;
 }
 function candidateDirectory() {
@@ -16165,7 +16284,7 @@ function candidateDirectory() {
 }
 function castHub() {
   const open = myEligible().filter((e) => e.status === 'VOTING');
-  return `${pageHead('Cast vote', 'Elections open for voting where you are eligible.')}${open.length ? `<div class="grid g-sm-2">${open.map((e) => { const v = voterStatus(e); const blk = voteBlocker(e); return `<div class="card"><div class="body stack-sm"><div class="row between">${status(e.status)}${badge(v.tone, v.label)}</div><h3 class="strong" style="font-size:17px">${esc(e.title)}</h3><p class="small muted">${esc(e.description)}</p><p class="small">Closes ${fmt(e.rules.votingEnd)} (${ago(e.rules.votingEnd)})</p>${blk ? alertBox('info', '', esc(blk)) : v.key === 'SUBMITTED' ? btn('View receipt', { href: '/app/receipts', variant: 'secondary' }) : btn('Start voting', { href: `/app/vote/${e.id}`, icon: 'check' })}</div></div>`; }).join('')}</div>` : empty('No election is open for voting', 'You will be notified when voting opens.', btn('My elections', { href: '/app/my-elections', variant: 'secondary' }))}`;
+  return `${pageHead('Cast vote', 'Elections open for voting where you are eligible.')}${open.length ? `<div class="grid g-sm-2">${open.map((e) => { const v = voterStatus(e); const blk = voteBlocker(e); return `<div class="card"><div class="body stack-sm"><div class="row between">${status(e.status)}${badge(v.tone, v.label)}</div><h3 class="strong" style="font-size:17px">${esc(e.title)}</h3><p class="small muted">${esc(e.description)}</p><p class="small">Closes ${fmt(e.rules.votingEnd)} (${ago(e.rules.votingEnd)})</p>${blk ? alertBox('info', '', esc(blk)) : v.key === 'SUBMITTED' ? btn('View receipt', { href: '/app/receipts', variant: 'secondary' }) : v.key === 'PENDING_QR' ? btn('Submit QR receipt now', { href: `/app/vote/${e.id}`, icon: 'qr' }) : btn('Start voting', { href: `/app/vote/${e.id}`, icon: 'check' })}</div></div>`; }).join('')}</div>` : empty('No election is open for voting', 'You will be notified when voting opens.', btn('My elections', { href: '/app/my-elections', variant: 'secondary' }))}`;
 }
 function electionInfo({ id }) {
   const e = election(id); if (!e || e.status === 'DRAFT') return empty('Election not found');
@@ -16187,13 +16306,14 @@ function castBallot({ id }) {
   const e = election(id); const u = me(); if (!e) return empty('Election not found');
   const head = (sub) => pageHead(`Ballot · ${esc(e.title)}`, sub);
   const b = UI.ballot?.eid === id ? UI.ballot : null;
-  if (b?.step === 'done') return `${head('Your ballot was accepted.')}${ballotDone(e, b)}`;
+  if (b?.step === 'done') return `${head(myReceipts().find((x) => x.eid === id)?.state === 'VALIDATED' ? 'Your ballot was validated and will be counted.' : 'Your ballot was received. Validate it by submitting its QR receipt.')}${ballotDone(e, b)}`;
   if (e.status !== 'VOTING') return `${head('')}${empty('Voting is not open', e.status === 'CAMPAIGN' || e.status === 'REGISTRATION' ? `Voting opens ${fmt(e.rules.votingStart)}.` : 'This election has closed.', btn('Election details', { href: `/app/e/${id}`, variant: 'secondary' }))}`;
   const blk = voteBlocker(e); if (blk) return `${head('')}${alertBox('info', 'You cannot vote in this election', esc(blk))}`;
   const rec = myReceipts().find((r) => r.eid === id);
+  if (rec?.state === 'PENDING_QR') return `${head('Your ballot is provisional until its QR receipt is validated.')}<div style="max-width:880px">${qrReceiptPanel(rec)}</div>`;
   if (rec) return `${head('')}<div class="stack" style="max-width:720px">${alertBox('success', 'You have already voted in this election', 'Each eligible voter casts one ballot. It cannot be changed.')}<div class="row">${btn('View receipt', { href: '/app/receipts' })}${btn('Try to vote again (simulates a replayed token)', { variant: 'secondary', act: 'replay-vote', data: { eid: id } })}</div></div>`;
   const held = S.devCred[u.id]?.[id];
-  if ((S.creds[id] || []).includes(u.email) && !held) return `${head('')}${alertBox('error', 'Credential already issued', 'A voting credential was issued to you, but this browser does not hold it (storage was cleared). By design it cannot be reissued: the server cannot tell which token was yours.')}`;
+  if ((S.creds[id] || []).includes(u.email) && !held) return `${head('')}<div class="stack" style="max-width:720px">${alertBox('warning', 'Your credential was interrupted', 'A voting credential was issued to you, but this browser did not finish storing it (for example, the page was reloaded while it was being issued). No ballot was cast with it.')}<div class="row">${btn('Get a new credential', { act: 'cred-reset', data: { eid: id }, icon: 'key' })}</div><p class="small muted">Prototype rule: the unused credential is cancelled and a fresh one is issued. A real deployment would need an administrator to do this.</p></div>`;
   const r = e.rules; const opts = [...approved(id).map((a) => ({ key: a.id, a })), ...(r.notaEnabled ? [{ key: 'NOTA' }] : [])];
   const st = b || (UI.ballot = { eid: id, step: held ? 'select' : 'start', sel: [], proto: null });
   const steps = [{ key: 'start', label: 'Credential' }, { key: 'select', label: 'Select' }, { key: 'review', label: 'Review & submit' }, { key: 'done', label: 'Receipt' }];
@@ -16207,8 +16327,14 @@ function castBallot({ id }) {
   } else if (st.step === 'review') {
     body = `<div class="stack">${card('Review your ballot', `<ul class="stack-sm" style="list-style:none;margin:0;padding:0">${st.sel.map((k) => `<li class="row">${ic('checkCircle')}<b class="strong">${esc(optionLabel(id, k))}</b></li>`).join('')}</ul><p class="small muted mt-4">After submission your ballot is encrypted and cannot be changed. It is sent anonymously, without your login token.</p><div id="submit-state"></div><div class="row between mt-4">${btn('Change selection', { variant: 'secondary', act: 'ballot-back' })}${btn('Submit ballot', { act: 'ballot-submit', data: { eid: id }, icon: 'check' })}</div>`)}</div>`;
   }
-  return `${head('A focused, private ballot. Nothing here is shown to anyone else.')}<div style="max-width:760px">${stepper(steps, st.step)}<div class="mt-6">${body}</div></div>`;
+  return `${head('A focused, private ballot. Nothing here is shown to anyone else.')}<div style="max-width:760px">${voidNotice(id)}${stepper(steps, st.step)}<div class="mt-6">${body}</div></div>`;
 }
+ACT['cred-reset'] = (el) => {
+  const e = election(el.dataset.eid); const u = me();
+  S.creds[e.id] = (S.creds[e.id] || []).filter((em) => em !== u.email);
+  audit('CREDENTIAL_REISSUE_ALLOWED', 'An interrupted, unused voting credential was cancelled so a new one can be issued', { eid: e.id, actor: 'DigiVote service', sub: 'BALLOT' });
+  save(); UI.ballot = null; toast('success', 'Interrupted credential cancelled. Get your new anonymous credential.'); rerender();
+};
 ACT['get-cred'] = async (el) => {
   const e = election(el.dataset.eid); const u = me(); const b = UI.ballot;
   const labels = ['Check the election key fingerprint against the published key', 'Generate a random token and blind it in this browser', 'Server checks your eligibility and signs the blinded value', 'Unblind the signature — the server never saw this token'];
@@ -16239,13 +16365,12 @@ ACT['ballot-submit'] = (el) => {
       const max = e.rules.maxSelections; const valid = approved(e.id).map((a) => a.id).concat(e.rules.notaEnabled ? ['NOTA'] : []);
       if (!b.sel.length || b.sel.length > max || b.sel.some((k) => !valid.includes(k)) || (b.sel.includes('NOTA') && b.sel.length > 1)) throw new Error('The selection does not follow this election’s rules.');
       (S.spent[e.id] ||= []).push(th);
-      const rec = storeBallot(e.id, b.sel.slice(), Date.now(), th);
-      flushPending(e.id);
+      const rec = issueProvisional(e.id, b.sel.slice(), th);
       delete S.devCred[u.id][e.id];
-      (S.wallet[u.id] ||= []).push({ eid: e.id, code: rec.code, c: rec.c, at: Date.now(), th });
+      (S.wallet[u.id] ||= []).push({ eid: e.id, code: rec.code, c: rec.c, at: rec.at, th, expires: rec.expires, state: 'PENDING_QR', flags: 0, subs: [] });
       return rec;
     }, 1200);
-    UI.ballot = { eid: e.id, step: 'done', code: r.code, c: r.c, sel: [] }; toast('success', 'Ballot accepted by the server.'); setTimeout(rerender, 0);
+    UI.ballot = { eid: e.id, step: 'done', code: r.code, c: r.c, sel: [] }; toast('success', 'Ballot received. Submit your QR receipt within 30 seconds to validate it.'); setTimeout(rerender, 0);
   } });
 };
 ACT['replay-vote'] = async (el) => {
@@ -16255,6 +16380,7 @@ ACT['replay-vote'] = async (el) => {
 ACT.print = () => window.print();
 function ballotDone(e, b) {
   const r = myReceipts().find((x) => x.eid === e.id);
+  if (r?.state) return `<div style="max-width:880px">${qrReceiptPanel(r)}</div>`;
   const total = ballotsOf(e.id).length;
   return `<div class="stack" style="max-width:820px">${alertBox('success', 'Your ballot was accepted', `The server confirmed it at ${fmt(r?.at)}. It is now one of <b>${total}</b> accepted ballots (${pct(total, e.eligible.length)}% turnout of ${e.eligible.length} eligible voters). Your receipt below is unique and does not reveal your choice.`)}${r ? receiptCard(r) : ''}${card('What happens next', `<ol class="small stack-sm" style="margin:0;padding-left:18px"><li>Your ballot commitment joins the public bulletin board in the next shuffled batch of ${BULLETIN_BATCH}.</li><li>After voting closes, the encrypted ballots are tallied — individual ballots are never decrypted.</li><li>Verify your receipt to see “Vote recorded”, then “Vote counted”.</li></ol><div class="row mt-4">${btn('My receipts', { href: '/app/receipts', variant: 'secondary' })}${btn('Verify now', { act: 'receipt-verify', data: { code: r?.code || '' } })}</div>`)}</div>`;
 }
@@ -16502,7 +16628,8 @@ const STATUS_PILL = { Live: 'green', Upcoming: 'blue', Completed: 'gray', Draft:
 const firstName = () => esc(me().name.split(' ')[0]);
 
 // ---------- Organizer Panel (Organization Owner) ----------
-function dOrganizer() {
+function dOrganizer() { return dOrganizerBase() + ledgerCard('Live Ballot Activity'); }
+function dOrganizerBase() {
   const elections = [['Student Council 2026', 'Educational', 'Oct 10, 2026', 'Oct 12, 2026', 'Live'], ['Board of Directors', 'Organization', 'Sep 28, 2026', 'Sep 30, 2026', 'Upcoming'], ['Municipal Council', 'Government', 'Sep 15, 2026', 'Sep 18, 2026', 'Completed'], ['Club Representative', 'Community', 'Aug 20, 2026', 'Aug 22, 2026', 'Completed'], ['Department Election', 'Educational', 'Aug 10, 2026', 'Aug 12, 2026', 'Completed']];
   return `${D.hero('hero-organizer', `<p class="hb-kicker">Welcome back,</p><h1 tabindex="-1" class="grad">${esc(me().name)}</h1><p class="hb-sub">Manage, monitor and conduct secure elections with DigiVote.</p>`)}
   <div class="d-stats">${[['ballot', 'blue', 'Total Elections', '12', '↑ 3 this month'], ['users', 'purple', 'Registered Voters', '24,560', '↑ 12% from last month'], ['play', 'cyan', 'Ongoing Elections', '3', '● Live Now'], ['flag', 'blue', 'Completed Elections', '5', '↑ 1 this month']].map((s, i) => D.stat(s, ['/app/elections', '/app/voters', '/app/lifecycle', '/app/archive'][i])).join('')}</div>
@@ -16510,12 +16637,13 @@ function dOrganizer() {
     <div class="d-col">${D.card('Voter Participation', D.line([[[12, 18, 26, 33, 41, 38, 46, 52, 49, 58, 63, 59, 68, 74, 79, 86, 93], '#3b82f6']], ['Sep 1', '', '', '', 'Sep 8', '', '', '', 'Sep 15', '', '', '', 'Sep 22', '', '', '', 'Sep 29'], { tip: [12, '68%', 'Sep 22'] }), { right: D.sel('Last 30 Days') })}
       ${D.row('minmax(0,1fr) minmax(0,1fr)', `${D.card('Election Status', D.ring([['Ongoing', 3, '#22c55e'], ['Completed', 5, '#3b82f6'], ['Upcoming', 2, '#8b5cf6'], ['Draft', 2, '#f97316']], '12', 'Total', 112))}${D.card('Voter Distribution', D.bars([['Govt.', 7000, 'linear-gradient(#3b82f6,#1d4ed8)'], ['Edu.', 12500, 'linear-gradient(#3b82f6,#1d4ed8)'], ['Org.', 6500, 'linear-gradient(#a855f7,#6d28d9)'], ['Comm.', 5600, 'linear-gradient(#a855f7,#6d28d9)']], { max: 15000, ticks: ['0', '5K', '10K', '15K'], h: 130 }))}`, 'tight')}</div>`)}
   ${D.row('minmax(0,1fr) minmax(0,1fr) minmax(0,1fr)', `${D.card('Quick Actions', D.actions([['add', 'blue', 'Create Election', 'Set up a new election with custom rules', '/app/elections/new'], ['users', 'purple', 'Manage Candidates', 'Add, edit or review candidates', '/app/approvals'], ['upload', 'cyan', 'Import Voters', 'Bulk add voters via CSV/Excel', '/app/voters'], ['chart', 'orange', 'View Results', 'See analytics and generate reports', '/app/results']], 'list'))}
-    ${D.card('Recent Activity', D.feed([['upload', 'purple', '120 new voters registered', '10 mins ago'], ['person', 'red', 'Candidate nomination submitted', '1 hour ago'], ['ballot', 'cyan', 'Student Council 2026 started', '3 hours ago'], ['upload', 'green', 'Voter list updated', '5 hours ago'], ['document', 'purple', 'Election results published', '1 day ago']]), { link: '/app/audit' })}
+    ${D.card('Recent Activity', D.feed([...liveActivity(), ['upload', 'purple', '120 new voters registered', '10 mins ago'], ['person', 'red', 'Candidate nomination submitted', '1 hour ago'], ['ballot', 'cyan', 'Student Council 2026 started', '3 hours ago'], ['upload', 'green', 'Voter list updated', '5 hours ago'], ['document', 'purple', 'Election results published', '1 day ago']]), { link: '/app/audit' })}
     ${D.card('System Status', D.status([['ballot', 'Voting Service'], ['archive', 'Database'], ['shield', 'Verification Service'], ['document', 'Audit Logs']]), { right: '<span class="d-ok"><i></i>All Systems Operational</span>' })}`)}`;
 }
 
 // ---------- Election Administrator ----------
-function dAdministrator() {
+function dAdministrator() { return dAdministratorBase() + ledgerCard('Live Ballot Activity'); }
+function dAdministratorBase() {
   const rows = [['Student Council 2026', 'Educational', 'Oct 10, 2026', 'Oct 12, 2026', 68, 'Live'], ['Municipal Council', 'Government', 'Sep 15, 2026', 'Sep 18, 2026', 100, 'Completed'], ['Board of Directors', 'Organization', 'Sep 28, 2026', 'Sep 30, 2026', 42, 'Upcoming'], ['Department Election', 'Educational', 'Aug 10, 2026', 'Aug 12, 2026', 100, 'Completed'], ['Club Representative', 'Community', 'Aug 20, 2026', 'Aug 22, 2026', 100, 'Completed']];
   return `${D.hero('hero-administrator', `<h1 tabindex="-1"><span class="dim">Manage.</span><br>Monitor.<br><span class="grad">Ensure Fair Elections.</span></h1><p class="hb-sub">A secure, transparent and inclusive election process with DigiVote.</p><p class="hb-sub">Oct 10, 2026 &nbsp;·&nbsp; 14:32:18 &nbsp;·&nbsp; <span class="d-ok"><i></i>System Secure</span></p>`)}
   <div class="d-stats">${[['calendar', 'blue', 'Total Elections', '24', '↑ 3 this month'], ['users', 'purple', 'Registered Voters', '1,24,560', '↑ 12%'], ['play', 'green', 'Active Elections', '5', '● Live Now'], ['flag', 'blue', 'Completed Elections', '16', '↑ 2 this month']].map((s, i) => D.stat(s, ['/app/elections', '/app/voters', '/app/lifecycle', '/app/results-management'][i])).join('')}</div>
@@ -16524,7 +16652,7 @@ function dAdministrator() {
     ${D.card('Voter Participation', `<b class="d-big">72%</b><p class="d-sub">Participation Rate</p>${D.line([[[18, 26, 34, 38, 46, 44, 52, 58, 55, 63, 72, 78, 88], '#3b82f6']], ['Oct 8', '', '', 'Oct 9', '', '', 'Oct 10', '', '', 'Oct 11', '', '', 'Oct 12'], { tip: [10, '72%', 'Today'], h: 140 })}`, { right: D.pill('green', 'Live') })}`)}
   ${D.row('minmax(0,1.55fr) minmax(0,1fr) minmax(0,1.1fr)', `${D.card('Quick Actions', D.actions([['add', 'blue', 'Create New Election', 'Set up with custom rules', '/app/elections/new'], ['upload', 'green', 'Add / Import Voters', 'Bulk upload via CSV/Excel', '/app/voters'], ['users', 'purple', 'Manage Candidates', 'Approve, reject or edit', '/app/approvals'], ['ballot', 'orange', 'Configure Ballot', 'Choose voting method', '/app/rules'], ['flag', 'red', 'Assign Polling Stations', 'Map physical/online booths', '/app/soon/polling-stations'], ['activity', 'blue', 'View Live Monitoring', 'Real-time voting activity', '/app/lifecycle']], 'grid3'))}
     ${D.card('System Status', D.status([['ballot', 'Voting Service'], ['archive', 'Database'], ['shield', 'Verification Service'], ['qr', 'QR Validation Service'], ['document', 'Audit Logging']]), { right: '<span class="d-ok"><i></i>All Systems Operational</span>' })}
-    ${D.card('Recent Activity', D.feed([['person', 'blue', 'New voter registered', '2 mins ago'], ['person', 'orange', 'Candidate nomination submitted', '15 mins ago'], ['building', 'blue', 'Polling station updated', '42 mins ago'], ['ballot', 'green', 'Election "Student Council 2026" started', '1 hour ago'], ['qr', 'cyan', 'QR verification completed', '1 hour ago'], ['warning', 'red', 'Suspicious login attempt blocked', '3 hours ago']]), { link: '/app/audit' })}`)}
+    ${D.card('Recent Activity', D.feed([...liveActivity(), ['person', 'blue', 'New voter registered', '2 mins ago'], ['person', 'orange', 'Candidate nomination submitted', '15 mins ago'], ['building', 'blue', 'Polling station updated', '42 mins ago'], ['ballot', 'green', 'Election "Student Council 2026" started', '1 hour ago'], ['qr', 'cyan', 'QR verification completed', '1 hour ago'], ['warning', 'red', 'Suspicious login attempt blocked', '3 hours ago']]), { link: '/app/audit' })}`)}
   ${D.row('minmax(0,1.25fr) minmax(0,1fr) minmax(0,1.05fr) minmax(0,1.25fr)', `${D.card('Voter Overview', `<div class="d-boxes">${[['person', 'blue', '1,24,560', 'Total Voters', ''], ['checkCircle', 'green', '1,12,340', 'Verified Voters', '90%'], ['person', 'orange', '2,345', 'Pending Verification', '8%'], ['close', 'red', '875', 'Ineligible / Removed', '2%']].map(([i, a, v, l, p]) => `<div class="d-box"><span class="d-tile xs a-${a}">${ic(i)}</span><b>${v}</b><small>${l}</small>${p ? `<em class="t-${a}">${p}</em>` : ''}</div>`).join('')}</div><div class="d-head sub"><h3>Voters by Category</h3>${D.sel('All Elections')}</div>${D.bars([['Students', 54230, 'linear-gradient(#3b82f6,#1d4ed8)'], ['Faculty', 8450, 'linear-gradient(#a855f7,#6d28d9)'], ['Staff', 5120, 'linear-gradient(#f43f5e,#be123c)'], ['Members', 38210, 'linear-gradient(#22d3ee,#0e7490)'], ['Others', 18550, 'linear-gradient(#f59e0b,#c2410c)']], { max: 60000, showValues: true, h: 130 })}`, { right: D.sel('All Elections') })}
     ${D.card('Voting Methods', D.ring([['Mobile App', 60, '#22d3ee', '%'], ['Web Portal', 25, '#8b5cf6', '%'], ['Polling Booth', 10, '#ec4899', '%'], ['Offline Ballot', 5, '#f59e0b', '%']], '5', 'Live Elections', 130))}
     ${D.card('Geographic Distribution', `<div class="d-geo"><div class="d-map">${D.img('map')}${ic('building')}</div><ul>${[['Tamil Nadu', '48,320'], ['Maharashtra', '18,450'], ['Karnataka', '15,230'], ['Delhi', '12,450'], ['Others', '30,110']].map(([s, v]) => `<li><span>${s}</span><b>${v}</b></li>`).join('')}</ul></div>`)}
@@ -16548,29 +16676,30 @@ function dVoter() {
 function dCandidate() {
   return `${D.hero('hero-candidate', `<p class="hb-kicker">Hi, ${firstName()}!</p><h1 tabindex="-1">Share Your Vision.<br><span class="grad">Build a Better Tomorrow.</span></h1><p class="hb-sub">Connect with voters, share your ideas and make a real impact with DigiVote.</p>`, '“A stronger<br>community begins<br>with your voice.”', 'candidate')}
   <div class="d-stats">${[['users', 'purple', '1,240', 'Supporters', '12% this week'], ['flag', 'orange', '320', 'Profile Views', '18% this week'], ['message', 'blue', '156', 'Messages Received', '6% this week'], ['heart', 'red', '89%', 'Positive Sentiment', '5% this week']].map(D.stat2).join('')}</div>
-  ${D.row('minmax(0,1.55fr) minmax(0,1fr)', `${D.card('Election Overview', `<div class="d-eo"><span class="d-eo-img">${D.img('election-2')}${ic('building')}</span><div class="d-eo-b"><b>Student Council Election 2026</b><small>Amrita University</small><ul><li>${ic('calendar', 'sm')}Oct 10, 2026 - Oct 12, 2026</li><li>${ic('users', 'sm')}4 Candidates</li><li>${ic('person', 'sm')}12,560 Eligible Voters</li></ul></div><div class="d-count-box"><p>Voting Starts In</p><div class="d-count">${[['02', 'Days'], ['12', 'Hours'], ['36', 'Minutes'], ['18', 'Seconds']].map(([v, u]) => `<span><b>${v}</b><small>${u}</small></span>`).join('')}</div>${D.btn('View Election Details', '/app/candidate/timeline', 'outline')}</div></div>`, { badge: ` ${D.pill('green', 'Live')}` })}
+  ${D.row('minmax(0,1.55fr) minmax(0,1fr)', `${D.card('Election Overview', `<div class="d-eo"><span class="d-eo-img">${D.img('election-2')}${ic('building')}</span><div class="d-eo-b"><b>Student Council Election 2026</b><small>Amrita University</small><ul><li>${ic('calendar', 'sm')}Oct 10, 2026 - Oct 12, 2026</li><li>${ic('users', 'sm')}5 Candidates</li><li>${ic('person', 'sm')}12,560 Eligible Voters</li></ul></div><div class="d-count-box"><p>Voting Starts In</p><div class="d-count">${[['02', 'Days'], ['12', 'Hours'], ['36', 'Minutes'], ['18', 'Seconds']].map(([v, u]) => `<span><b>${v}</b><small>${u}</small></span>`).join('')}</div>${D.btn('View Election Details', '/app/candidate/timeline', 'outline')}</div></div>`, { badge: ` ${D.pill('green', 'Live')}` })}
     ${D.card('My Candidate Profile', `<div class="d-cp"><span class="d-avatar">${D.img('candidate-photo')}${esc(me().name[0])}<i>${ic('image', 'sm')}</i></span><div><b class="d-cp-n">${esc(me().name)} <span class="d-verified">${ic('verified')}</span></b><small>Student Council Election 2026<br>Amrita University</small><p>“A more inclusive, innovative and student-driven tomorrow.”</p><div class="d-chips">${['Leadership', 'Innovation', 'Inclusivity'].map((c) => D.chip('blue', c)).join('')}</div></div></div><div class="d-cp-a">${D.btn('View Public Profile', '/app/candidate/profile')}<a class="d-btn outline" href="#/app/candidate/profile">${ic('share', 'sm')} Share Profile</a></div>`, { right: '<a class="d-btn outline sm" href="#/app/candidate/profile">Edit Profile</a>' })}`)}
   ${D.row('minmax(0,1.55fr) minmax(0,1fr)', `${D.card('Voter Outreach', `<div class="d-outreach">${[['megaphone', 'purple', 'Announcements', 'Share updates with eligible voters', 'Create Post'], ['image', 'blue', 'Campaign Resources', 'Post banners, videos and documents', 'Upload Media'], ['calendar', 'purple', 'Events', 'Host virtual or offline events', 'Create Event'], ['message', 'cyan', 'Q&A with Voters', 'Answer questions from voters', 'View Questions']].map(([i, a, t, d, c]) => `<div class="d-out"><div class="d-out-h"><span class="d-tile sm a-${a}">${ic(i)}</span><span><b>${t}</b><small>${d}</small></span></div><a class="d-btn outline sm" href="#/app/soon/voter-outreach">${c} ${ic('arrowRight', 'sm')}</a></div>`).join('')}</div>`, { link: '/app/soon/voter-outreach' })}
     ${D.card('Campaign Reach', `<ul class="d-keys"><li><i style="background:#3b82f6"></i>Profile Views</li><li><i style="background:#8b5cf6"></i>Supporters</li><li><i style="background:#ec4899"></i>Messages</li></ul>${D.line([[[80, 120, 150, 140, 190, 230, 260, 250, 310, 360, 420, 460, 520, 600, 690, 760], '#3b82f6'], [[60, 90, 110, 130, 150, 170, 200, 210, 240, 270, 300, 330, 380, 430, 500, 560], '#8b5cf6'], [[20, 40, 60, 70, 90, 100, 120, 150, 160, 180, 200, 230, 260, 300, 340, 380], '#ec4899']], ['Sep 1', '', '', '', 'Sep 8', '', '', '', 'Sep 15', '', '', 'Sep 22', '', '', '', 'Sep 29'], { max: 800, ticks: [0, 200, 400, 600, 800], unit: '', h: 140 })}`, { right: D.sel('Last 30 Days') })}`)}
-  ${D.row('minmax(0,1fr) minmax(0,1.1fr) minmax(0,1fr)', `${D.card('Recent Activity', D.feed([['person', 'blue', 'New supporter joined your campaign', '2 mins ago'], ['help', 'purple', 'A voter asked a question', '15 mins ago'], ['megaphone', 'orange', 'Your post reached 500+ voters', '1 hour ago'], ['heart', 'red', 'Someone liked your campaign video', '3 hours ago']]), { link: '/app/notifications' })}
+  ${D.row('minmax(0,1fr) minmax(0,1.1fr) minmax(0,1fr)', `${D.card('Recent Activity', D.feed([...liveActivity(true), ['person', 'blue', 'New supporter joined your campaign', '2 mins ago'], ['help', 'purple', 'A voter asked a question', '15 mins ago'], ['megaphone', 'orange', 'Your post reached 500+ voters', '1 hour ago'], ['heart', 'red', 'Someone liked your campaign video', '3 hours ago']]), { link: '/app/notifications' })}
     ${D.card('Top Engagement Sources', D.ring([['Direct Profile Visits', 35, '#22d3ee', '%'], ['Announcements', 25, '#8b5cf6', '%'], ['Shared Links', 20, '#a855f7', '%'], ['Events', 12, '#f43f5e', '%'], ['Search', 8, '#3b82f6', '%']], '1,240', 'Total Reach', 140))}
     ${D.card('Tips to Improve Your Campaign', `<ul class="d-tips">${[['edit', 'blue', 'Complete your candidate profile', 'Add your bio, vision and key proposals'], ['message', 'orange', 'Share your campaign with voters', 'Post updates and engage regularly'], ['help', 'cyan', 'Host a live Q&A session', 'Build trust by interacting with voters'], ['image', 'purple', 'Use visual content', 'Add banners, infographics and videos']].map(([i, a, t, d]) => `<li><span class="d-tile xs a-${a}">${ic(i)}</span><span><b>${t}</b><small>${d}</small></span>${ic('chevronRight', 'sm')}</li>`).join('')}</ul>`, { link: '/app/candidate/profile' })}`)}`;
 }
 
 // ---------- Auditor Portal ----------
-function dAuditor() {
+function dAuditor() { return dAuditorBase() + ledgerCard(); }
+function dAuditorBase() {
   const qr = `<svg viewBox="0 0 21 21" class="d-qr" aria-hidden="true">${(() => { let s = ''; let seed = 7; for (let y = 0; y < 21; y++) for (let x = 0; x < 21; x++) { seed = (seed * 1103515245 + 12345) % 2147483648; const finder = (x < 7 && y < 7) || (x > 13 && y < 7) || (x < 7 && y > 13); const on = finder ? (x % 6 === 0 || y % 6 === 0 || (x > 13 && (x - 14) % 6 === 0) || (y > 13 && (y - 14) % 6 === 0) || ((x % 7) > 1 && (x % 7) < 5 && (y % 7) > 1 && (y % 7) < 5)) : seed % 3 === 0; if (on) s += `<rect x="${x}" y="${y}" width="1" height="1"/>`; } return s; })()}</svg>`;
   return `${D.hero('hero-auditor', `<h1 tabindex="-1">Audit. Verify.<br><span class="grad">Ensure Trust.</span></h1><p class="hb-sub">Independent verification and real-time monitoring for transparent, tamper-proof elections.</p>`, '', 'auditor')}
   <div class="d-stats">${[['building', 'blue', 'Total Elections Audited', '12', '↑ 3 this month'], ['users', 'purple', 'Total Votes Verified', '124,560', '↑ 12%'], ['qr', 'green', 'Valid QR Scans', '124,320', '99.8%'], ['warning', 'red', 'Flagged / Suspicious', '240', '↓ 0.2%', 'down']].map((s, i) => D.stat(s, ['/app/elections', '/app/integrity', '/app/verify', '/app/security'][i])).join('')}</div>
-  ${D.row('minmax(0,1fr) minmax(0,2.15fr)', `${D.card('Election Selection', `<div class="d-esel"><span class="d-select wide">Student Council Election 2026 ${ic('chevronRight', 'sm')}</span>${D.pill('green', 'Live')}</div><div class="d-esel-b"><span class="d-eo-img">${D.img('election-2')}${ic('building')}</span><ul><li><b>Amrita University</b></li><li>${ic('calendar', 'sm')}Oct 10, 2026 - Oct 12, 2026</li><li>${ic('users', 'sm')}12,560 Eligible Voters</li><li>${ic('document', 'sm')}4 Candidates</li><li>${ic('settings', 'sm')}Auditor Access: Read-Only</li></ul></div>`)}
+  ${D.row('minmax(0,1fr) minmax(0,2.15fr)', `${D.card('Election Selection', `<div class="d-esel"><span class="d-select wide">Student Council Election 2026 ${ic('chevronRight', 'sm')}</span>${D.pill('green', 'Live')}</div><div class="d-esel-b"><span class="d-eo-img">${D.img('election-2')}${ic('building')}</span><ul><li><b>Amrita University</b></li><li>${ic('calendar', 'sm')}Oct 10, 2026 - Oct 12, 2026</li><li>${ic('users', 'sm')}12,560 Eligible Voters</li><li>${ic('document', 'sm')}5 Candidates</li><li>${ic('settings', 'sm')}Auditor Access: Read-Only</li></ul></div>`)}
     <section class="d-card d-verify"><div class="d-verify-l"><header class="d-head"><h2>QR / Ballot Verification</h2></header><div class="d-tabs boxed"><span class="on">Scan QR Code</span><span>Manual Verification</span><span>Batch Upload</span></div><a class="d-drop" href="#/app/verify">${ic('qr')}<span>Click to scan or drag &amp; drop an image</span><small>Supports DigiVote QR (v1.0)</small><span class="d-btn outline sm">${ic('upload', 'sm')} Open Camera</span></a></div>
-      <div class="d-verify-r"><h2>Verification Result</h2><div class="d-valid">${ic('checkCircle')} Valid Vote</div><dl class="d-kv">${[['QR ID', 'DV-2026-AC-7F3K9'], ['Election', 'Student Council 2026'], ['Voter ID (Hashed)', 'a91f3e...7c2d1'], ['Timestamp', 'Oct 10, 2026 14:32:18'], ['Status', '<span class="t-green">Verified</span> <span class="t-green">● Counted</span>'], ['Polling Station', 'Main Block - PS01']].map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`).join('')}</dl>${D.btn('View Audit Trail', '/app/audit', 'outline')}</div>
+      <div class="d-verify-r"><h2>Verification Result</h2>${(S.qrSubs || []).length ? liveVerifyResult() : `<div class="d-valid">${ic('checkCircle')} Valid Vote</div><dl class="d-kv">${[['QR ID', 'DV-2026-AC-7F3K9'], ['Election', 'Student Council 2026'], ['Voter ID (Hashed)', 'a91f3e...7c2d1'], ['Timestamp', 'Oct 10, 2026 14:32:18'], ['Status', '<span class="t-green">Verified</span> <span class="t-green">● Counted</span>'], ['Polling Station', 'Main Block - PS01']].map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`).join('')}</dl>${D.btn('View Audit Trail', '/app/audit', 'outline')}`}</div>
       <div class="d-verify-q"><p>Sample Scanned QR</p>${qr}<span class="d-validtag">VALID</span></div></section>`)}
   ${D.row('minmax(0,1.3fr) minmax(0,1fr) minmax(0,1fr)', `${D.card('Real-Time Vote Verification', `<ul class="d-keys"><li><i style="background:#3b82f6"></i>Verified</li><li><i style="background:#ef4444"></i>Flagged</li></ul>${D.line([[[100, 900, 1300, 1700, 1650, 1900, 2300, 2350, 2700, 2900, 3300, 3600], '#3b82f6'], [[20, 40, 50, 60, 60, 70, 80, 90, 100, 110, 120, 140], '#ef4444']], ['10:00', '', '11:00', '', '12:00', '', '13:00', '', '14:00', '', '15:00', '16:00'], { max: 4000, ticks: [0, 1000, 2000, 3000, 4000], unit: '', h: 140 })}`, { right: D.sel('Today') })}
     ${D.card('Vote Source Distribution', D.ring([['Polling Stations', 62, '#3b82f6', '%'], ['Mobile App', 22, '#6366f1', '%'], ['Web Portal', 10, '#8b5cf6', '%'], ['Offline Upload', 4, '#f59e0b', '%'], ['Other', 2, '#94a3b8', '%']], '124,560', 'Total Verified', 132))}
     ${D.card('Verification Status', `<ul class="d-vbars">${[['Valid QR Codes', 99.8, '#22c55e'], ['Invalid / Tampered', 0.1, '#ef4444'], ['Duplicate QR', 0.05, '#ef4444'], ['Malformed / Unknown', 0.05, '#ef4444']].map(([l, v, c]) => `<li><span>${l}</span><span class="d-vbar"><i style="width:${Math.max(v, 3)}%;background:${c}"></i></span><b>${v}%</b></li>`).join('')}</ul>`)}`)}
-  ${D.row('minmax(0,1.3fr) minmax(0,1fr) minmax(0,1fr)', `${D.card('Recent Verification Logs', D.table(['Time', 'QR ID', 'Voter ID (Hashed)', 'Status', 'Source', 'Details'], [['14:32:18', 'DV-2026-AC-7F3K9', 'a91f3e...7c2d1', 'Valid', 'PS01'], ['14:31:55', 'DV-2026-AC-9D12P', 'd4c6b7...9e8a2', 'Valid', 'Mobile App'], ['14:31:42', 'DV-2026-AC-4K8LM', 'e3f1a0...1d9f8', 'Duplicate', 'PS02'], ['14:31:10', 'DV-2026-AC-1N0Q7', '7b9c4d...2e3f0', 'Invalid', 'Web Portal'], ['14:30:58', 'DV-2026-AC-8H6RT', 'c2d1f4...8a7b9', 'Valid', 'PS03']].map(([t, q, v, s, src]) => [t, `<span class="mono">${q}</span>`, `<span class="mono">${v}</span>`, D.pill(s === 'Valid' ? 'green' : 'red', s), src, '<a href="#/app/audit">View</a>'])), { link: '/app/audit', cls: 'flush' })}
-    ${D.card('Anomaly Detection', D.feed([['warning', 'red', 'Multiple votes from same device', '14:12', 'Detected 5 similar entries'], ['clock', 'red', 'Unusual voting pattern', '13:45', 'High frequency from single IP'], ['error', 'red', 'Invalid QR attempts', '11:30', '12 malformed QR codes detected'], ['flag', 'red', 'Geolocation mismatch', '11:05', 'Vote location does not match assigned region']]), { badge: ' <span class="d-count-badge">3</span>', link: '/app/security' })}
+  ${D.row('minmax(0,1.3fr) minmax(0,1fr) minmax(0,1fr)', `${D.card('Recent Verification Logs', D.table(['Time', 'QR ID', 'Token (Hashed)', 'Status', 'Source', 'Details'], [...liveQrRows(), ['14:32:18', 'DV-2026-AC-7F3K9', 'a91f3e...7c2d1', 'Valid', 'PS01'], ['14:31:55', 'DV-2026-AC-9D12P', 'd4c6b7...9e8a2', 'Valid', 'Mobile App'], ['14:31:42', 'DV-2026-AC-4K8LM', 'e3f1a0...1d9f8', 'Duplicate', 'PS02'], ['14:31:10', 'DV-2026-AC-1N0Q7', '7b9c4d...2e3f0', 'Invalid', 'Web Portal'], ['14:30:58', 'DV-2026-AC-8H6RT', 'c2d1f4...8a7b9', 'Valid', 'PS03']].map(([t, q, v, s, src]) => [t, `<span class="mono">${q}</span>`, `<span class="mono">${v}</span>`, D.pill(s === 'Valid' ? 'green' : s === 'Expired' ? 'orange' : 'red', s), src, '<a href="#/app/audit">View</a>'])), { link: '/app/audit', cls: 'flush' })}
+    ${D.card('Anomaly Detection', D.feed([...liveAnomalies(), ['warning', 'red', 'Multiple votes from same device', '14:12', 'Detected 5 similar entries'], ['clock', 'red', 'Unusual voting pattern', '13:45', 'High frequency from single IP'], ['error', 'red', 'Invalid QR attempts', '11:30', '12 malformed QR codes detected'], ['flag', 'red', 'Geolocation mismatch', '11:05', 'Vote location does not match assigned region']]), { badge: ` <span class="d-count-badge">${3 + liveAnomalies().length}</span>`, link: '/app/security' })}
     ${D.card('Audit Reports', `<ul class="d-reports">${[['document', 'blue', 'Verification Summary Report', 'Complete QR validation statistics'], ['warning', 'red', 'Anomaly Detection Report', 'Flagged activities and risk analysis'], ['shield', 'orange', 'Election Integrity Report', 'Security and audit trail analysis'], ['document', 'green', 'Polling Station Report', 'Station-wise verification logs']].map(([i, a, t, d]) => `<li><span class="d-tile xs a-${a}">${ic(i)}</span><span><b>${t}</b><small>${d}</small></span><em>PDF</em>${ic('download', 'sm')}</li>`).join('')}</ul>`, { right: '<a class="d-btn outline sm" href="#/app/reports">Generate Report ' + ic('arrowRight', 'sm') + '</a>' })}`)}`;
 }
 
@@ -16619,10 +16748,235 @@ APP_ROUTES.unshift(
   ['/app/auditor', dAuditor, { roles: ['AUDITOR'] }],
 );
 
+// =====================================================================================================
+// QR receipt submission to the audit desk (prototype rules)
+// A ballot stays provisional until its signed QR receipt is submitted to the audit desk within 30 seconds.
+// Valid → the ballot is committed and counted. Too late → it expires and the voter must recast.
+// Two or more duplicate or invalid submissions → the vote is voided and the voter is emailed to revote.
+// =====================================================================================================
+const QR_WINDOW_MS = 30 * 1000; const QR_MAX_ISSUES = 2;
+const fmtPrecise = (t) => { const d = new Date(t); return `${d.toLocaleDateString(undefined, { day: 'numeric', month: 'short', year: 'numeric' })} ${d.toLocaleTimeString(undefined, { hour12: false })}.${String(d.getMilliseconds()).padStart(3, '0')}`; };
+const hms = (t) => new Date(t).toLocaleTimeString(undefined, { hour12: false });
+const qrSig = (eid, code, at, th, c) => sha256(`${receiptKey(eid)}|DIGI-VOTE-QR-v1|${code}|${eid}|${at}|${th}|${c}`).slice(0, 24);
+/** QR content: DIGIVOTE|QR1|receipt code|election|issued (ms)|spent-token hash|ballot commitment|signature */
+const qrPayload = (w) => ['DIGIVOTE', 'QR1', w.code, w.eid, w.at, w.th, w.c, qrSig(w.eid, w.code, w.at, w.th, w.c)].join('|');
+const QR_RESULT = { VALID: ['green', 'Valid', 'success', 'QR validated'], DUPLICATE: ['red', 'Duplicate', 'warning', 'Duplicate QR'], INVALID: ['red', 'Invalid', 'error', 'Invalid QR'], EXPIRED: ['amber', 'Expired', 'error', 'QR expired'] };
+
+function issueProvisional(eid, sel, th) {
+  const at = Date.now(); const nonce = Math.random().toString(36).slice(2);
+  const c = sha256(`DIGI-VOTE-BALLOT-v1|${eid}|${sel.join(',')}|${nonce}`);
+  const code = makeReceiptCode(eid, th);
+  (S.provisional ||= {})[code] = { eid, sel, c, th, at, expires: at + QR_WINDOW_MS, state: 'PENDING_QR' };
+  audit('BALLOT_RECEIVED', `Anonymous ballot received · token ${th.slice(0, 12)}… · commitment ${c.slice(0, 12)}… · provisional until its QR receipt is validated (30 s)`, { eid, actor: 'DigiVote service', sub: 'BALLOT' });
+  return { code, c, at, expires: at + QR_WINDOW_MS };
+}
+function commitProvisional(code) {
+  const p = S.provisional[code];
+  (S.ballots[p.eid] ||= []).push({ id: rid('b'), c: p.c, sel: p.sel });
+  (S.pending[p.eid] ||= []).push(p.c);
+  S.receipts[receiptHash(code)] = { eid: p.eid, c: p.c, th: p.th };
+  p.state = 'VALIDATED'; p.sel = null; p.validatedAt = Date.now();
+  flushPending(p.eid);
+  audit('RECEIPT_QR_VALIDATED', `QR receipt validated · receipt hash ${receiptHash(code).slice(0, 12)}… · token ${p.th.slice(0, 12)}… · ballot committed to the tally`, { eid: p.eid, actor: 'Audit desk', sub: 'BALLOT' });
+}
+/** Removes a not-validated (or invalidated) vote so the voter can recast with a new anonymous token. */
+function voidVote(u, w, reason, kind) {
+  const eid = w.eid; const p = S.provisional?.[w.code];
+  if (w.state === 'VALIDATED') {
+    S.ballots[eid] = ballotsOf(eid).filter((b) => b.c !== w.c);
+    S.pending[eid] = (S.pending[eid] || []).filter((c) => c !== w.c);
+    delete S.receipts[receiptHash(w.code)];
+  }
+  if (p) { p.state = 'VOIDED'; p.sel = null; p.voidedAt = Date.now(); p.voidKind = kind; }
+  S.spent[eid] = (S.spent[eid] || []).filter((t) => t !== w.th);
+  S.creds[eid] = (S.creds[eid] || []).filter((em) => em !== u.email);
+  S.wallet[u.id] = (S.wallet[u.id] || []).filter((x) => x.code !== w.code);
+  (S.voided ||= []).unshift({ uid: u.id, eid, code: w.code, at: Date.now(), reason, kind });
+  if (UI.ballot?.eid === eid) UI.ballot = null;
+  audit('BALLOT_VOIDED', `${kind === 'EXPIRED' ? 'QR receipt not submitted within 30 s; provisional ballot discarded' : `Vote invalidated after ${w.flags} duplicate/invalid QR submissions; voter asked to revote`} · token ${w.th.slice(0, 12)}…`, { eid, actor: 'Audit desk', sub: 'BALLOT' });
+}
+function sendEmail(u, subject, body, extra = {}) {
+  const m = { id: rid('m'), uid: u.id, to: u.email, from: 'DigiVote Audit Desk <audit@digivote.demo>', at: Date.now(), subject, body, read: false, ...extra };
+  (S.emails ||= []).unshift(m);
+  notify([u.id], { title: subject, msg: extra.summary || `Email from the DigiVote Audit Desk to ${u.email}`, cat: 'Email', eid: extra.eid || null, to: '/app/mail', mail: m.id });
+  return m;
+}
+/** Submits QR content to the audit desk on behalf of the signed-in voter. Returns the logged submission. */
+function qrSubmit(text, source) {
+  const u = me(); const now = Date.now(); const parts = String(text || '').trim().split('|');
+  const mine = myReceipts().filter((x) => x.state);
+  const w = mine.find((x) => x.code === parts[2]) || mine.find((x) => x.state === 'PENDING_QR') || mine[mine.length - 1] || null;
+  let result; let detail;
+  if (parts.length !== 8 || parts[0] !== 'DIGIVOTE' || parts[1] !== 'QR1') { result = 'INVALID'; detail = 'Not a DigiVote receipt QR (unreadable or wrong format)'; }
+  else {
+    const [, , code, eid, atS, th, c, sig] = parts; const p = S.provisional?.[code];
+    if (!p || p.eid !== eid) { result = 'INVALID'; detail = 'No receipt with this code was issued'; }
+    else if (qrSig(eid, code, Number(atS), th, c) !== sig || p.th !== th || p.c !== c || p.at !== Number(atS)) { result = 'INVALID'; detail = 'Signature mismatch: the QR content was altered'; }
+    else if (p.state === 'VOIDED') { result = 'INVALID'; detail = 'This receipt was voided; the vote must be cast again'; }
+    else if (p.state === 'VALIDATED') { result = 'DUPLICATE'; detail = 'This QR was already submitted and validated'; }
+    else if (now > p.expires) { result = 'EXPIRED'; detail = `Submitted ${Math.round((now - p.at) / 1000)} s after issue (limit 30 s)`; }
+    else { result = 'VALID'; detail = `Validated ${((now - p.at) / 1000).toFixed(1)} s after issue; ballot committed`; }
+  }
+  const sub = { id: rid('q'), at: now, result, detail, source, code: w && result !== 'INVALID' ? w.code : (parts[0] === 'DIGIVOTE' ? parts[2] : null), eid: w?.eid || null, voter: `${sha256(u.id).slice(0, 6)}…${sha256(u.id).slice(-5)}`, th: w?.th || null };
+  (S.qrSubs ||= []).unshift(sub);
+  if (w) (w.subs ||= []).unshift({ at: now, result, detail, source });
+  if (result === 'VALID') { commitProvisional(w.code); w.state = 'VALIDATED'; w.validatedAt = now; }
+  else if (result === 'EXPIRED' && w) voidVote(u, w, 'The 30-second QR submission window expired', 'EXPIRED');
+  else if (w) {
+    w.flags = (w.flags || 0) + 1;
+    security(result === 'DUPLICATE' ? 'DUPLICATE_QR_SUBMISSION' : 'INVALID_QR_SUBMISSION', 'MEDIUM', `${detail} (receipt ${formatCode(w.code).slice(0, 11)}…)`, { eid: w.eid });
+    if (w.flags >= QR_MAX_ISSUES) {
+      const e = election(w.eid); const issues = w.subs.filter((x) => x.result === 'DUPLICATE' || x.result === 'INVALID');
+      voidVote(u, w, `${w.flags} duplicate or invalid QR submissions were found`, 'ISSUES');
+      sub.voided = true;
+      sub.email = sendEmail(u, 'Your vote is facing an issue — please revote', `Hello ${u.name},
+
+We could not validate your vote in "${e.title}".
+
+The audit desk found ${issues.length} problems with the QR receipt submitted for receipt ${formatCode(w.code)}:
+${issues.slice().reverse().map((x) => `  • ${QR_RESULT[x.result][1]} — ${x.detail} (${fmtPrecise(x.at)})`).join('\n')}
+
+Because duplicate or invalid QR receipts were found, we can't validate that vote. For your protection it has been voided and was not counted.
+
+Please sign in and cast your vote again. You will receive a new anonymous token and a new QR receipt; submit it once, within 30 seconds.
+
+DigiVote Audit Desk
+(This is a prototype: the email is shown inside DigiVote and is not sent to a real mailbox.)`, { eid: w.eid, cta: `/app/vote/${w.eid}`, summary: `We couldn't validate your vote in ${e.title}: ${issues.length} duplicate or invalid QR receipts were found. Your vote was voided and not counted — please cast it again. Full email in Mail.` });
+    }
+  }
+  save();
+  return sub;
+}
+function showQrResult(sub) {
+  const [, label, kind, title] = QR_RESULT[sub.result];
+  toast(kind, `<b>${title}</b> — ${esc(sub.detail)}${sub.voided ? '. Your vote was voided; check your mail.' : ''}`);
+  rerender();
+  if (sub.email) setTimeout(() => openEmail(sub.email.id), 350);
+  return label;
+}
+// expire receipts that were not submitted in time, and keep the countdowns moving
+setInterval(() => {
+  if (typeof S === 'undefined' || !S || !me()) return;
+  const now = Date.now(); let changed = false;
+  myReceipts().filter((w) => w.state === 'PENDING_QR' && now > w.expires).forEach((w) => {
+    const u = me(); const e = election(w.eid);
+    w.subs.unshift({ at: now, result: 'EXPIRED', detail: 'No QR receipt was submitted within 30 seconds', source: 'Audit desk timer' });
+    (S.qrSubs ||= []).unshift({ id: rid('q'), at: now, result: 'EXPIRED', detail: 'No QR receipt submitted within 30 s', source: 'Audit desk timer', code: w.code, eid: w.eid, voter: `${sha256(u.id).slice(0, 6)}…${sha256(u.id).slice(-5)}`, th: w?.th || null });
+    voidVote(u, w, 'The 30-second QR submission window expired before the QR receipt was submitted', 'EXPIRED');
+    notify([u.id], { title: 'QR receipt expired', msg: `Your ballot in ${e.title} was not validated in time. Cast it again.`, cat: 'Election', eid: w.eid, to: `/app/vote/${w.eid}` });
+    toast('error', `<b>QR receipt expired</b> — your ballot in ${esc(e.title)} was not validated within 30 seconds. Please cast your vote again.`);
+    changed = true;
+  });
+  if (changed) { save(); rerender(); return; }
+  $$('[data-qr-left]').forEach((el) => {
+    const w = myReceipts().find((x) => x.code === el.dataset.qrLeft); if (!w) return;
+    const left = Math.max(0, w.expires - now); el.textContent = (left / 1000).toFixed(1);
+    const ring = el.closest('.qr-ring'); ring.style.setProperty('--p', left / QR_WINDOW_MS); ring.classList.toggle('low', left < 10000);
+  });
+}, 100);
+
+function qrReceiptPanel(w) {
+  const e = election(w.eid); const pend = w.state === 'PENDING_QR'; const ok = w.state === 'VALIDATED';
+  const payload = qrPayload(w); const left = Math.max(0, w.expires - Date.now());
+  const status = pend
+    ? `<div class="qr-timer" role="timer" aria-label="Time left to submit the QR receipt"><span class="qr-ring ${left < 10000 ? 'low' : ''}" style="--p:${left / QR_WINDOW_MS}"><b data-qr-left="${w.code}">${(left / 1000).toFixed(1)}</b><small>seconds</small></span><div><b class="t">Submit this QR to the audit desk now</b><p class="small muted">Your ballot is provisional. It is validated and counted only after this QR receipt is submitted within 30 seconds. If time runs out it expires, and you must cast your vote again.</p></div></div>`
+    : ok ? alertBox('success', 'Validated by the audit desk', `QR receipt accepted at ${fmtPrecise(w.validatedAt)}. Your ballot is committed and will be counted. Submitting this QR again is recorded as a duplicate.`) : '';
+  const issues = w.flags ? alertBox('warning', `${w.flags} of ${QR_MAX_ISSUES} issues on this receipt`, 'Duplicate or invalid QR submissions are flagged. At 2 issues the vote is voided and you are emailed to revote.') : '';
+  const details = kv([
+    ['Receipt code', `<span class="mono">${formatCode(w.code)}</span>`],
+    ['Election', esc(e.title)],
+    ['Issued at', fmtPrecise(w.at)],
+    ['QR valid until', `${fmtPrecise(w.expires)} <span class="xs muted">(30 s window)</span>`],
+    ...(ok ? [['Validated at', fmtPrecise(w.validatedAt)]] : []),
+    ['Anonymous token hash', `${hash(w.th, 28)} <span class="xs muted">SHA-256 of the spent token</span>`],
+    ['Ballot commitment', `${hash(w.c, 28)} <span class="xs muted">SHA-256</span>`],
+    ['Receipt hash', `${hash(receiptHash(w.code), 28)} <span class="xs muted">what the server stores</span>`],
+    ['QR signature', `<span class="mono">${qrSig(w.eid, w.code, w.at, w.th, w.c)}</span>`],
+  ]);
+  const actions = pend
+    ? `<div class="row">${btn('Submit QR to audit desk', { act: 'qr-submit', data: { code: w.code }, icon: 'qr' })}<label class="btn secondary" for="qr-sub-file" style="cursor:pointer">${ic('upload', 'sm')}Upload QR image</label><input type="file" id="qr-sub-file" accept="image/*" data-change="qr-sub-file" hidden>${btn('Download QR (PNG)', { variant: 'ghost', icon: 'download', act: 'qr-png', data: { code: w.code } })}</div>`
+    : ok ? `<div class="row">${btn('Verify now', { act: 'receipt-verify', data: { code: w.code } })}${btn('Submit QR again', { variant: 'secondary', act: 'qr-submit', data: { code: w.code } })}${btn('Download QR (PNG)', { variant: 'ghost', icon: 'download', act: 'qr-png', data: { code: w.code } })}</div>` : '';
+  const log = (w.subs || []).length ? `<div class="mt-4"><h3 class="strong" style="font-size:14px">Audit desk submissions</h3><ul class="qr-log">${w.subs.map((x) => `<li>${badge(QR_RESULT[x.result][0], QR_RESULT[x.result][1])}<span class="d">${esc(x.detail)} <span class="xs muted">· ${esc(x.source)}</span></span><time>${fmtPrecise(x.at)}</time></li>`).join('')}</ul></div>` : '';
+  const test = `<details class="acc mt-4"><summary>Test the audit checks</summary><p class="small muted mt-2">This box holds the exact QR content. Edit any character and submit it to see an <b>invalid</b> result; submit a validated QR again to see a <b>duplicate</b>. Two issues void the vote and send you an email.</p><form data-form="qr-text" class="stack-sm mt-2" novalidate>${textarea('qrtext', payload, 'rows="3" spellcheck="false" style="font-family:var(--mono);font-size:12px"')}<div class="row"><button class="btn secondary sm" type="submit">Submit this content</button>${btn('Submit a tampered copy', { size: 'sm', variant: 'ghost', act: 'qr-tamper', data: { code: w.code } })}</div></form></details>`;
+  return `<div class="receipt qr-receipt"><div class="row top" style="gap:24px;flex-wrap:wrap"><div style="text-align:center">${qrImg(payload, `Signed QR receipt ${formatCode(w.code)}`, 230)}<p class="xs muted mt-1">Signed QR receipt</p></div><div style="flex:1;min-width:260px" class="stack-sm"><p class="xs muted">QR receipt · ${esc(S.org.name)}</p><b class="strong" style="font-size:17px">${esc(e.title)}</b>${status}${issues}${details}${actions}</div></div>${log}${test}<p class="xs muted mt-3">The QR holds the receipt code, election, issue time, the anonymous token hash, the ballot commitment and a server signature. It contains no name or email and never reveals your choice.</p></div>`;
+}
+function voidNotice(eid) {
+  const v = (S.voided || []).find((x) => x.uid === S.session && x.eid === eid);
+  if (!v || myReceipts().some((r) => r.eid === eid)) return '';
+  return `<div style="margin-bottom:18px">${alertBox('error', v.kind === 'EXPIRED' ? 'Your QR receipt expired — please recast' : 'Your vote is facing an issue — please revote', `${esc(v.reason)} (${fmtPrecise(v.at)}). That ballot was voided and is not counted. Cast your vote again below: you will get a new anonymous token and a new QR receipt.`)}</div>`;
+}
+const findMine = (code) => myReceipts().find((x) => x.code === code);
+Object.assign(ACT, {
+  async 'qr-submit'(el) { const w = findMine(el.dataset.code); if (!w) return; await withBusy(el, () => delay(300)); showQrResult(qrSubmit(qrPayload(w), 'Receipt QR on this device')); },
+  'qr-tamper'(el) { const w = findMine(el.dataset.code); if (!w) return; const p = qrPayload(w).split('|'); p[6] = (p[6][0] === 'a' ? 'b' : 'a') + p[6].slice(1); showQrResult(qrSubmit(p.join('|'), 'Tampered copy (test)')); },
+  'qr-png'(el) {
+    const w = findMine(el.dataset.code); if (!w) return; const e = election(w.eid);
+    const cv = document.createElement('canvas'); cv.width = 560; cv.height = 700; const g = cv.getContext('2d');
+    g.fillStyle = '#fff'; g.fillRect(0, 0, cv.width, cv.height); g.fillStyle = '#0b1f4d'; g.fillRect(0, 0, cv.width, 70);
+    g.fillStyle = '#fff'; g.font = 'bold 26px Segoe UI, Arial'; g.fillText('DigiVote · QR receipt', 24, 45);
+    const size = drawQr(g, qrPayload(w), 40, 90, 480);
+    g.fillStyle = '#0b1f4d'; g.font = 'bold 18px Segoe UI, Arial'; g.fillText(e.title.slice(0, 44), 24, 110 + size);
+    g.fillStyle = '#334155'; g.font = '15px Consolas, monospace'; g.fillText(formatCode(w.code), 24, 138 + size);
+    g.font = '13px Segoe UI, Arial'; g.fillText(`Issued ${fmtPrecise(w.at)} · valid until ${fmtPrecise(w.expires)}`, 24, 162 + size);
+    const a = document.createElement('a'); a.href = cv.toDataURL('image/png'); a.download = `digivote-qr-${formatCode(w.code)}.png`; document.body.appendChild(a); a.click(); a.remove();
+    toast('info', 'QR image downloaded. Upload it with “Upload QR image” before the timer runs out.');
+  },
+  'mail-open'(el) { openEmail(el.dataset.id); },
+});
+FORMS['qr-text'] = (f) => showQrResult(qrSubmit(f.qrtext.value, 'Pasted QR content'));
+CHANGE['qr-sub-file'] = async (el) => {
+  const file = el.files[0]; el.value = ''; if (!file) return;
+  try { const text = await decodeQrImage(file); showQrResult(qrSubmit(text, `QR image “${file.name}”`)); } catch (er) { toast('error', esc(er.message)); }
+};
+
+// ---------- Mail (prototype inbox; nothing is sent to a real mailbox) ----------
+const myMail = () => (S.emails || []).filter((m) => m.uid === S.session);
+function openEmail(id) {
+  const m = (S.emails || []).find((x) => x.id === id); if (!m) return; m.read = true; S.notes.filter((n) => n.mail === id).forEach((n) => { n.read = true; }); save(); renderTopbar();
+  modal({ title: esc(m.subject), wide: true, body: `${kv([['From', esc(m.from)], ['To', esc(m.to)], ['Received', fmtPrecise(m.at)]])}<div class="mail-view mt-4">${esc(m.body)}</div>${m.cta ? `<div class="row mt-4">${btn('Cast my vote again', { href: m.cta, icon: 'ballot' })}</div>` : ''}` });
+}
+function mailPage() {
+  const list = myMail();
+  return `${pageHead('Mail', 'Emails from DigiVote to your address. In this prototype they are delivered here instead of to a real mailbox.')}${list.length ? card('', `<ul class="mail-list">${list.map((m) => `<li class="${m.read ? '' : 'unread'}"><button type="button" data-act="mail-open" data-id="${m.id}"><span class="d-tile sm a-${m.read ? 'blue' : 'red'}">${ic('message')}</span><span style="flex:1;min-width:0"><b>${esc(m.subject)}</b><small>${esc(m.from)} → ${esc(m.to)}</small></span><time class="small muted">${fmtPrecise(m.at)}</time></button></li>`).join('')}</ul>`) : empty('No emails yet', 'If the audit desk cannot validate your vote, you will be emailed here.')}`;
+}
+APP_ROUTES.push(['/app/mail', mailPage]);
+
+// ---------- live QR submissions on the auditor dashboard ----------
+const liveQrRows = () => (S.qrSubs || []).slice(0, 5).map((x) => [hms(x.at), x.code ? `${formatCode(x.code).slice(0, 11)}…` : '—', x.th ? `${x.th.slice(0, 6)}…${x.th.slice(-5)}` : '—', QR_RESULT[x.result][1], 'Voter QR']);
+const liveAnomalies = () => (S.qrSubs || []).filter((x) => x.result !== 'VALID').slice(0, 3).map((x) => [x.result === 'EXPIRED' ? 'clock' : 'warning', 'red', `${QR_RESULT[x.result][3]} submission`, hms(x.at), x.detail]);
+function liveVerifyResult() {
+  const x = S.qrSubs[0]; const [tone, label] = QR_RESULT[x.result]; const e = x.eid ? election(x.eid) : null;
+  return `<div class="d-valid" style="${x.result === 'VALID' ? '' : 'background:rgba(239,68,68,.14);color:#f87171'}">${ic(x.result === 'VALID' ? 'checkCircle' : 'warning')} ${label} ${x.result === 'VALID' ? 'Vote' : 'QR'}</div><dl class="d-kv">${[['QR ID', x.code ? formatCode(x.code).slice(0, 17) + '…' : '—'], ['Election', e ? esc(e.title) : '—'], ['Anonymous Token (Hashed)', x.th ? `<span class="mono" title="${x.th}">${x.th.slice(0, 8)}…${x.th.slice(-5)}</span>` : '—'], ['Timestamp', fmtPrecise(x.at)], ['Status', `<span class="t-${tone === 'green' ? 'green' : 'red'}">${esc(x.detail)}</span>`], ['Source', esc(x.source)]].map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`).join('')}</dl>${D.btn('View Audit Trail', '/app/audit', 'outline')}`;
+}
+
+// ---------- Anonymous ballot ledger shared with the other roles (no voter identity) ----------
+const ledgerRows = () => Object.entries(S.provisional || {}).map(([code, p]) => ({ code, ...p })).sort((a, b) => b.at - a.at);
+const ledgerState = (r) => (r.state === 'VOIDED' ? ['red', r.voidKind === 'EXPIRED' ? 'Expired' : 'Voided'] : r.state === 'VALIDATED' ? ['green', 'Validated'] : ['orange', 'Awaiting QR']);
+function ledgerCard(title = 'Anonymous Ballot Ledger') {
+  const rows = ledgerRows().slice(0, 8);
+  const live = S.elections.filter((x) => x.status === 'VOTING');
+  const sum = `<div class="d-ledger-sum">${live.map((x) => `<span><b>${esc(x.title)}</b> · turnout ${ballotsOf(x.id).length} of ${x.eligible.length} (${pct(ballotsOf(x.id).length, x.eligible.length)}%)</span>`).join('')}<span>Voter names and emails are never shown: each ballot is identified only by its anonymous token hash.</span></div>`;
+  const body = rows.length
+    ? D.table(['Time', 'Election', 'Anonymous token (SHA-256)', 'Ballot commitment', 'Receipt hash', 'Status', 'Bulletin'], rows.map((r) => { const entry = boardOf(r.eid).find((b) => b.c === r.c); const [tone, label] = ledgerState(r); return [hms(r.at), esc(election(r.eid).title), `<span class="mono">${r.th.slice(0, 10)}…${r.th.slice(-6)}</span>`, `<span class="mono">${r.c.slice(0, 12)}…</span>`, `<span class="mono">${receiptHash(r.code).slice(0, 12)}…</span>`, D.pill(tone, label), entry ? `#${entry.seq}` : r.state === 'VALIDATED' ? 'Next batch' : '—']; }))
+    : '<p class="small muted" style="padding:4px 16px 6px">No ballots cast through the voter portal yet. When a voter casts one, it appears here by its anonymous token hash.</p>';
+  return D.row('minmax(0,1fr)', D.card(title, sum + body, { link: '/app/audit', linkLabel: 'Audit log', cls: 'flush', badge: ` ${D.pill('green', 'Live')}` }));
+}
+function liveActivity(forCandidate = false) {
+  return ledgerRows().slice(0, 3).map((r) => {
+    const e = election(r.eid); const tok = `${r.th.slice(0, 8)}…`;
+    if (forCandidate) return ['ballot', 'blue', `A ballot was cast in ${e.title}`, ago(r.at), `Turnout now ${ballotsOf(r.eid).length} of ${e.eligible.length}`];
+    const [, label] = ledgerState(r);
+    if (r.state === 'VALIDATED') return ['checkCircle', 'green', `Anonymous ballot validated · token ${tok}`, ago(r.validatedAt || r.at), e.title];
+    if (r.state === 'VOIDED') return ['warning', 'red', `Ballot ${label.toLowerCase()} · token ${tok}`, ago(r.voidedAt || r.at), e.title];
+    return ['qr', 'orange', `Ballot awaiting QR receipt · token ${tok}`, ago(r.at), e.title];
+  });
+}
+
 // ---------- Start ----------
 S = load(); if (!S) seed();
 S.seededAt ||= Date.now(); S.progress ||= {};
 S.spent ||= {}; S.devCred ||= {}; S.integrityRuns ||= [];
+S.users.filter((u) => u.uniqueNo).forEach(enrollSignup); save();
 try { UI.collapsed = localStorage.getItem('digivote.simulation.collapsed') === '1'; const sp = localStorage.getItem('digivote.simulation.panel'); UI.simOpen = false; } catch { UI.simOpen = false; }
 render();
 </script>
